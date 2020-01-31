@@ -1,0 +1,27 @@
+main {
+    justify-content: center;
+    text-align: center;
+}
+
+button {
+    width: 150px;
+    height: 40px;
+    color: white;
+    background-color: darkslategray;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 4px 1px 12px 2px #ccc;
+    margin: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+input {
+    width: 80%;
+    height: 24px;
+}
+
+li {
+    list-style-type: none;
+}
