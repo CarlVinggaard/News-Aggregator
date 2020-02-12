@@ -1,6 +1,7 @@
-main {
-    justify-content: center;
-    text-align: center;
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800,900&display=swap');
+
+h2 {
+    font: bold 30px 'Raleway';
 }
 
 button {
@@ -17,11 +18,49 @@ button {
     font-size: 16px;
 }
 
-input {
-    width: 80%;
+a {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.search {
+    max-width: 1200px;
+    height: 24px;
+}
+
+.navbar-search {
+    max-width: 200px;
     height: 24px;
 }
 
 li {
     list-style-type: none;
+}
+
+img {
+    width: 100%;
+    max-height: 80vw;
+    object-fit: contain;
+}
+
+.section-container {
+    max-width: 1000px;
+}
+
+#frontpage > div:nth-child(2n) {
+    background-color: #eee;
+}
+
+.source-text {
+    font: bold 13px 'Raleway';
+    color: blue;
+}
+
+.published-time {
+    font: 400 13px 'Raleway';
+    color: gray;
 }
