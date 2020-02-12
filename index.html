@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
+    <!-- FONT AWESOME -->
+    <script src="https://kit.fontawesome.com/d9c8a97a10.js" crossorigin="anonymous"></script>
 
     <!-- AXIOS -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -36,9 +38,6 @@
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mx-auto d-table-row align-middle">
-                            <li class="nav-item active d-table-cell">
-                                <a class="nav-link" href="general.html">General <span class="sr-only">(current)</span></a>
-                            </li>
                             <li class="nav-item d-table-cell">
                                 <a class="nav-link" href="business.html">Business</a>
                             </li>
@@ -58,8 +57,8 @@
                                 <a class="nav-link" href="health.html">Health</a>
                             </li>
                             <li class="d-table-cell">
-                                <input id="input" type="text" class="navbar-search"></input>
-                                <button class="button" onclick="searchEverything(document.getElementById('input').value)">Search</button>
+                                <input id="input" type="text" class="navbar-search"></input> 
+                                <button class="button" onclick="searchEverything(document.getElementById('input').value)"><i class="fas fa-search text-secondary"></i></button>
                             </li>
                         </ul>
                     </div>
@@ -67,7 +66,7 @@
             </div>
         </nav>
         
-        <div id="frontpage" class="my-5"></div>
+        <div id="content" class="my-5"></div>
     
     </main>
     
@@ -84,7 +83,7 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
     <script>
-        showTopStories();
+        showTopStories('general');
     </script>
 
 </body>
