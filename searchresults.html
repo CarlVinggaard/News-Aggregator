@@ -18,17 +18,18 @@
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="css/style.css"></link>
 
-    <title>Global News</title>
+    <title></title>
 </head>
 <body>
+    
     <main class="wrapper container justify-content-center my-4">
 
         <!-- NAVBAR -->
         <nav class="navbar navbar-expand-lg navbar-light">
             
-            <div class="row justify-content-center mx-auto">
+            <div class="row justify-content-center mx-auto">            
                 <div class="col-12 d-flex">
-                    <a class="navbar-brand mx-auto text-center text-uppercase" href="index.html">Insert cool name/logo</a>
+                    <a class="navbar-brand mx-auto text-uppercase text-center" href="index.html">Insert cool name/logo</a>
                 </div>
 
                 <div class="col-12">
@@ -38,7 +39,7 @@
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mx-auto d-table-row align-middle">
-                            <li class="nav-item active d-table-cell">
+                            <li class="nav-item d-table-cell">
                                 <a class="nav-link" href="index.html">News</a>
                             </li>
                             <li class="nav-item d-table-cell">
@@ -59,17 +60,22 @@
                             <li class="nav-item d-table-cell">
                                 <a class="nav-link" href="health.html">Health</a>
                             </li>
-                            <li class="d-table-cell">
-                                <input id="searchinput" type="text" class="navbar-search"></input> 
-                                <a class="btn" onclick="searchEverything(document.getElementById('searchinput').value)"><i class="fas fa-search text-secondary"></i></a>
-                            </li>
                         </ul>
                     </div>
                 </div>
             </div>
         </nav>
+
+        <div class="row justify-content-center mt-5">
+            <div class="col-12 section-container">
+                <input id="searchinput" type="text" class="searchfield-wide"></input>
+                <a class="btn" onclick="searchEverything(document.getElementById('searchinput').value)"><i class="fas fa-search text-secondary"></i></a>
+            </div>
+        </div>
+
+        <div id="metainfo" class="container"></div>
         
-        <div id="content" class="my-5"></div>
+        <div id="searchresults" class="container my-5"></div>
     
     </main>
     
@@ -87,7 +93,10 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
     <script>
-        showTopStories('general');
+        let results = JSON.parse(window.sessionStorage.getItem('currentSearchResults'));
+        renderSearchMetaInfo();
+        renderSearchResults(results);
+        document.title = window.sessionStorage.getItem('query');
     </script>
 
 </body>
