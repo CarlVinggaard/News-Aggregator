@@ -1,11 +1,13 @@
 function showTopStories(category = null) {
-    let url = 'https://newsapi.org/v2/top-headlines?country=gb';
+    let url = 'https://newsapi.org/v2/top-headlines?';
+    
+    url += 'country=' + document.getElementById('region').value;
 
     if (category) {
-        url = url + '&category=' + category;
+        url += '&category=' + category;
     }
 
-    url = url + '&apiKey=081f564d356d457982b0cf109a72aea8';
+    url += '&apiKey=081f564d356d457982b0cf109a72aea8';
 
     console.log(url);
 

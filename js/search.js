@@ -2,7 +2,13 @@
 function searchEverything(query) {
     window.sessionStorage.setItem('query', query);
 
-    let url = 'https://newsapi.org/v2/everything?q=' + query + '&apiKey=081f564d356d457982b0cf109a72aea8';
+    let url = 'https://newsapi.org/v2/everything?q=' + query;
+    
+    /* if (language) {
+        url += '&language=' + document.getElementById('language').value;
+    } */
+    
+    url += '&apiKey=081f564d356d457982b0cf109a72aea8';
 
     console.log(url);
     
