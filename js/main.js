@@ -1,10 +1,3 @@
-// Search with keywords
-function searchEverything(query) {
-    let url = 'https://newsapi.org/v2/everything?q=' + query + '&apiKey=081f564d356d457982b0cf109a72aea8';
-    
-    makeList(fetchData(url));
-}
-
 function showTopStories(category = null) {
     let url = 'https://newsapi.org/v2/top-headlines?country=gb';
 
@@ -16,11 +9,11 @@ function showTopStories(category = null) {
 
     console.log(url);
 
-    fetchData(url);
+    fetchDataForTopStories(url);
 }
 
-// Sends the request and returns the data
-function fetchData(url) {
+// Send GET request and do something with the response data
+function fetchDataForTopStories(url) {
 
     axios.get(url)
     .then(response => {
@@ -29,12 +22,12 @@ function fetchData(url) {
         renderPage(response.data.articles);
 
     })
-    .catch(err =>
-        console.log(err)
-    );
+    .catch(err => {
+        console.log(err);
+    });
 }
 
-// Renders the contents of an array to the front page.
+// Renders the contents of an array to the page.
 function renderPage(responseArray) {
 
     let canvas = document.createElement('div');
