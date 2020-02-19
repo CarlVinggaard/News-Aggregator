@@ -1,27 +1,27 @@
-function showTopStories(category = null) {
-    let url = 'https://newsapi.org/v2/top-headlines?';
+// String the URL together from the user input and call the fetchData function.
+function showTopStories() {
+    let url = 'https://newsapi.org/v2/top-headlines?pageSize=38';
+    let category = window.sessionStorage.getItem('category');
     
-    url += 'country=' + document.getElementById('region').value;
-
-    if (category) {
-        url += '&category=' + category;
-    }
+    url += '&country=' + document.getElementById('region').value;
+    
+    url += '&category=' + category;
 
     url += '&apiKey=081f564d356d457982b0cf109a72aea8';
-
+    
     console.log(url);
 
     fetchDataForTopStories(url);
 }
 
-// Send GET request and do something with the response data
+// Send GET request and call the renderPageFromResponseObject() function with the response.
 function fetchDataForTopStories(url) {
 
     axios.get(url)
     .then(response => {
         
         console.log(response);
-        renderPage(response.data.articles);
+        renderPageFromResponseObject(response.data.articles);
 
     })
     .catch(err => {
@@ -30,91 +30,48 @@ function fetchDataForTopStories(url) {
 }
 
 // Renders the contents of an array to the page.
-function renderPage(responseArray) {
+function renderPageFromResponseObject(responseArray) {
+
+    console.log(responseArray.length);
 
     let canvas = document.createElement('div');
 
-    // Each item contains a row, a col-X, an image and a paragraph.
-    for (article of responseArray) {
+    let counter = 1;
+    let randomNumber;
+
+    topStory = renderTopStory(responseArray[0]);
+    canvas.appendChild(topStory);
+
+    // Feeds all the articles into the front page generator. There are X types of rows that include a different amount of articles. 'counter' keeps track of the articles.
+    while (counter < responseArray.length - 2) {
         
-        newRow = renderPageItem(article);
+        randomNumber = Math.random();
+
+        if (randomNumber < 0.33 && responseArray.length - counter > 2) {
+            newRow = renderRowType3(responseArray[counter], responseArray[counter + 1], responseArray[counter + 2]);
+            counter += 3;
+            
+        } else if (randomNumber < 0.66 && responseArray.length - counter > 1) {
+            newRow = renderRowType2(responseArray[counter], responseArray[counter + 1]);
+            counter += 2;
+        } else {
+            newRow = renderRowType1(responseArray[counter]);
+            counter++;
+        }
+
         canvas.appendChild(newRow);
     }
 
     document.getElementById('content').innerHTML = canvas.innerHTML;
 }
 
-// Creates an html row with the contents of an article. 
-function renderPageItem(article) {
-
-    let newRow = document.createElement('div');
-    newRow.classList.add('row', 'justify-content-center', 'my-1', 'pb-4');
-
-    let newCol = document.createElement('div');
-    newCol.classList.add('col-12', 'section-container');
-
-    let newAnchor = document.createElement('a');
-    newAnchor.href = article.url;
-    newAnchor.target = '_blank';
-
-    let newRow2 = document.createElement('div');
-    newRow2.classList.add('row');
-
-    let newLine = document.createElement('hr');
-    newLine.classList.add('col-12');
-
-    // Image
-    let newImgCol = document.createElement('div');
-    let newImg = document.createElement('img');
-    
-    if (article.urlToImage) {
-        newImgCol.classList.add('col-12', 'col-sm-7', 'col-md-5', 'mb-2');
-        newImg.src = article.urlToImage;
-    }
-
-    // Text
-    let newTextCol = document.createElement('div');
-    newTextCol.classList.add('col-12');
-    article.urlToImage ? newTextCol.classList.add('col-sm-5', 'col-md-7'): null;
-
-    let date = new Date(article.publishedAt);
-    let newTime = document.createElement('p');
-    newTime.classList.add('published-time');
-    newTime.innerHTML = date.toString().slice(0,21);
-
-    let newHeading = document.createElement('h2');
-    newHeading.innerText = removeSourceFromTitle(article.title);
-
-    let newParagraph = document.createElement('p');
-    newParagraph.classList.add('mb-4');
-    newParagraph.innerText = article.description;
-
-    let newSource = document.createElement('p')
-    newSource.classList.add('source-text')
-    newSource.innerText = article.source.name;
-
-    // Put it together
-    if (article.urlToImage) {
-        newImgCol.appendChild(newImg);
-        newRow2.appendChild(newImgCol);
-    }
-
-    newTextCol.appendChild(newTime);
-    newTextCol.appendChild(newHeading);
-    newTextCol.appendChild(newParagraph);
-    newTextCol.appendChild(newSource);
-    newRow2.appendChild(newTextCol);
-    newAnchor.appendChild(newRow2);
-    newCol.appendChild(newAnchor);
-    newRow.appendChild(newCol);
-    newRow.appendChild(newLine);
-
-    return newRow;
-}
-
 // News source (e.g. bbc.co.uk) is included in the title after " - ", so this function removes it.
 function removeSourceFromTitle(string) {
 
-    index = string.indexOf(" - ");
+    let index = string.indexOf(" - ");
     return string.slice(0, index);
+}
+
+function showSearchBar() {
+    document.getElementById('searchinput').classList.toggle('d-none');
 }

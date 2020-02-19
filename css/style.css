@@ -25,6 +25,9 @@ a:hover {
 .navbar-search {
     max-width: 200px;
     height: 24px;
+    position: fixed;
+    top: 100px;
+    right: 50px;
 }
 
 .searchfield-wide {
@@ -37,10 +40,30 @@ nav {
     font: 400 20px 'Raleway';
 }
 
+button {
+    border: none;
+    background-color: white;
+}
+
+button:focus {
+    outline: none;
+}
+
 img {
     width: 100%;
-    max-height: 250px;
-    object-fit: contain;
+    min-height: 250px;
+    object-fit: cover;
+    vertical-align: top;
+}
+
+article {
+    position: relative;
+    height: 100%;
+}
+
+.line {
+    position: absolute;
+    bottom: 0;
 }
 
 .section-container {

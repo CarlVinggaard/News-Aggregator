@@ -4,13 +4,21 @@ function searchEverything(query) {
 
     let url = 'https://newsapi.org/v2/everything?q=' + query;
     
-    /* if (language) {
-        url += '&language=' + document.getElementById('language').value;
-    } */
-    
+    if (document.getElementById('language')) { if (document.getElementById('language').value) {
+            url += '&language=' + document.getElementById('language').value;
+    }}
+
+    if (document.getElementById('domains')) { if (document.getElementById('domains').value) {
+        url += '&domains=' + document.getElementById('domains').value;
+    }}
+
+    if (document.getElementById('sortby')) { if (document.getElementById('sortby').value) {
+        url += '&sortBy=' + document.getElementById('sortby').value;
+    }}
+
     url += '&apiKey=081f564d356d457982b0cf109a72aea8';
 
-    console.log(url);
+    window.sessionStorage.setItem('url', url);
     
     fetchDataForSearch(url);
 
@@ -25,6 +33,7 @@ function fetchDataForSearch(url) {
         window.location.pathname = '/searchresults.html';
     
         window.sessionStorage.setItem('currentSearchResults', JSON.stringify(response.data.articles));
+        window.sessionStorage.setItem('totalResults', response.data.totalResults);
 
     })
     .catch(err =>
