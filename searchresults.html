@@ -70,7 +70,9 @@
         <div class="row justify-content-center mt-5">
             <div class="col-12 section-container">
                 <input id="searchinput" type="text" class="searchfield-wide"></input>
-                <a class="btn" onclick="searchEverything(document.getElementById('searchinput').value)"><i class="fas fa-search text-secondary"></i></a>
+                <a class="btn" onclick="saveUserInputToSessionStorage(); showSearchResults();">
+                    <i class="fas fa-search text-secondary"></i>
+                </a>
             </div>
         </div>
 
@@ -141,10 +143,10 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
     <script>
-        let results = JSON.parse(window.sessionStorage.getItem('currentSearchResults'));
-        renderSearchMetaInfo();
-        renderSearchResults(results);
-        renderPaginationButtons();
+        showSearchMetaInfo();
+        showSearchResults();
+        showPaginationButtons();
+
         document.title = window.sessionStorage.getItem('query');
     </script>
 

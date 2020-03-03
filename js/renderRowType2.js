@@ -32,25 +32,26 @@ function renderRowType2(article1, article2) {
     let newAnchor1 = document.createElement('a');
     newAnchor1.href = article1.url;
     newAnchor1.target = '_blank';
+    newAnchor1.classList.add('col-12', 'col-sm-6');
 
     let newAnchor2 = document.createElement('a');
     newAnchor2.href = article2.url;
     newAnchor2.target = '_blank';
+    newAnchor2.classList.add('col-12', 'col-sm-6');
 
     let newArticle1 = document.createElement('article');
-    newArticle1.classList.add('col-12', 'col-sm-6');
 
     let newArticle2 = document.createElement('article');
-    newArticle2.classList.add('col-12', 'col-sm-6');
 
     // Images
-    let newImg1 = document.createElement('img');
-    let newImg2 = document.createElement('img');
-    
     if (article1.urlToImage) {
+        var newImg1 = document.createElement('img');
+        newImg1.classList.add('mb-3');
         newImg1.src = article1.urlToImage;
     }
     if (article2.urlToImage) {
+        var  newImg2 = document.createElement('img');
+        newImg2.classList.add('mb-3');
         newImg2.src = article2.urlToImage;
     }
 
@@ -60,63 +61,56 @@ function renderRowType2(article1, article2) {
 
     let date1 = new Date(article1.publishedAt);
     let newTime1 = document.createElement('p');
-    newTime1.classList.add('published-time', 'mt-3');
+    newTime1.classList.add('published-time');
     newTime1.innerHTML = date1.toString().slice(0,21);
 
     let date2 = new Date(article2.publishedAt);
     let newTime2 = document.createElement('p');
-    newTime2.classList.add('published-time', 'mt-3');
+    newTime2.classList.add('published-time');
     newTime2.innerHTML = date2.toString().slice(0,21);
 
-    let newHeading1 = document.createElement('h2');
+    let newHeading1 = document.createElement('h3');
     newHeading1.innerText = removeSourceFromTitle(article1.title);
 
-    let newHeading2 = document.createElement('h2');
+    let newHeading2 = document.createElement('h3');
     newHeading2.innerText = removeSourceFromTitle(article2.title);
 
     let newParagraph1 = document.createElement('p');
-    newParagraph1.classList.add('mb-4');
+    newParagraph1.classList.add('mb-4', 'd-none', 'd-sm-block');
     newParagraph1.innerText = article1.description;
 
     let newParagraph2 = document.createElement('p');
-    newParagraph2.classList.add('mb-4');
+    newParagraph2.classList.add('mb-4', 'd-none', 'd-sm-block');
     newParagraph2.innerText = article2.description;
 
     let newSource1 = document.createElement('p')
     newSource1.classList.add('source-text')
-    newSource1.innerText = article1.source.name + ' | ';
+    newSource1.innerText = article1.source.name;
 
     let newSource2 = document.createElement('p')
     newSource2.classList.add('source-text')
-    newSource2.innerText = article2.source.name + ' | ';
-
-    let newCategory1 = document.createElement('span');
-    newCategory1.classList.add(article1.source.id, 'uppercase');
-    newCategory1.innerHTML = 'news';
-    newSource1.appendChild(newCategory1);
-
-    let newCategory2 = document.createElement('span');
-    newCategory2.classList.add(article2.source.id, 'uppercase');
-    newCategory2.innerHTML = 'news';
-    newSource2.appendChild(newCategory2);
+    newSource2.innerText = article2.source.name;
 
     // Append it together
     newText1.appendChild(newTime1);
     newText1.appendChild(newHeading1);
     newText1.appendChild(newParagraph1);
     newText1.appendChild(newSource1);
-    newArticle1.appendChild(newImg1);
+    article1.urlToImage ? newArticle1.appendChild(newImg1): null;
     newArticle1.appendChild(newText1);
 
     newText2.appendChild(newTime2);
     newText2.appendChild(newHeading2);
     newText2.appendChild(newParagraph2);
     newText2.appendChild(newSource2);
-    newArticle2.appendChild(newImg2);
+    article2.urlToImage ? newArticle2.appendChild(newImg2): null;
     newArticle2.appendChild(newText2);
 
-    newRow2.appendChild(newArticle1);
-    newRow2.appendChild(newArticle2);
+    newAnchor1.appendChild(newArticle1);
+    newAnchor2.appendChild(newArticle2);
+
+    newRow2.appendChild(newAnchor1);
+    newRow2.appendChild(newAnchor2);
 
     newCol.appendChild(newRow2);
     newCol.appendChild(newLineRow);

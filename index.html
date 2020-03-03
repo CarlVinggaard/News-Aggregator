@@ -28,7 +28,7 @@
                 <form class="ml-auto">
                     <div class="form-group">
                         <label for="region">Region</label>
-                        <select id="region" onchange="showTopStories()">
+                        <select id="region" onchange="showTopStories(); updateCategoryBar();">
                             <option value="gb" default>Great Britain</option>
                             <option value="cn">China</option>
                             <option value="us">US</option>
@@ -62,28 +62,28 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mx-auto d-table-row align-middle">
                             <li class="nav-item active d-table-cell">
-                                <button class="nav-link" onclick="window.sessionStorage.setItem('category', 'general'); showTopStories();">News</button>
+                                <button class="nav-link" onclick="window.sessionStorage.setItem('category', 'general'); showTopStories(); updateCategoryBar();">News</button>
                             </li>
                             <li class="nav-item d-table-cell">
-                                <button class="nav-link" onclick="window.sessionStorage.setItem('category', 'business'); showTopStories();">Business</button>
+                                <button class="nav-link" onclick="window.sessionStorage.setItem('category', 'business'); showTopStories(); updateCategoryBar();">Business</button>
                             </li>
                             <li class="nav-item d-table-cell">
-                                <button class="nav-link" onclick="window.sessionStorage.setItem('category', 'sports'); showTopStories();">Sports</button>
+                                <button class="nav-link" onclick="window.sessionStorage.setItem('category', 'sports'); showTopStories(); updateCategoryBar();">Sports</button>
                             </li>
                             <li class="nav-item d-table-cell">
-                                <button class="nav-link" onclick="window.sessionStorage.setItem('category', 'entertainment'); showTopStories();">Entertainment</button>
+                                <button class="nav-link" onclick="window.sessionStorage.setItem('category', 'entertainment'); showTopStories(); updateCategoryBar();">Entertainment</button>
                             </li>
                             <li class="nav-item d-table-cell">
-                                <button class="nav-link" onclick="window.sessionStorage.setItem('category', 'technology'); showTopStories();">Technology</button>
+                                <button class="nav-link" onclick="window.sessionStorage.setItem('category', 'technology'); showTopStories(); updateCategoryBar();">Technology</button>
                             </li>
                             <li class="nav-item d-table-cell">
-                                <button class="nav-link" onclick="window.sessionStorage.setItem('category', 'science'); showTopStories();">Science</button>
+                                <button class="nav-link" onclick="window.sessionStorage.setItem('category', 'science'); showTopStories(); updateCategoryBar();">Science</button>
                             </li>
                             <li class="nav-item d-table-cell">
-                                <button class="nav-link" onclick="window.sessionStorage.setItem('category', 'health'); showTopStories();">Health</button>
+                                <button class="nav-link" onclick="window.sessionStorage.setItem('category', 'health'); showTopStories(); updateCategoryBar();">Health</button>
                             </li>
-                            <li class="d-table-cell">
-                                <input id="searchinput" type="text" class="navbar-search d-none"></input> 
+                            <li class="d-table-cell input-group ">
+                                <input id="searchinput" type="text" class="navbar-search d-none py-2 px-4"></input> 
                                 <a class="btn" onclick="
                                     showSearchBar();
                                     if (document.getElementById('searchinput').value) {
@@ -101,6 +101,11 @@
     </header>
 
     <main class="wrapper container justify-content-center my-4">
+        <div class="row">
+            <div id="category-bar" class="col-12 d-none p-3">
+                <h2 id="category-heading" class="text-uppercase"></h2>
+            </div>
+        </div>
         <div id="content" class="my-5"></div>
     </main>
 
@@ -126,7 +131,6 @@
     <script>
         window.sessionStorage.setItem('category', 'general');
         showTopStories();
-        getCategoriesFromSourceList();
     </script>
 
 </body>

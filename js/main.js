@@ -75,3 +75,31 @@ function removeSourceFromTitle(string) {
 function showSearchBar() {
     document.getElementById('searchinput').classList.toggle('d-none');
 }
+
+
+
+function updateCategoryBar() {
+    
+    const categoryColors = {
+        "business": ["darkblue", "white"],
+        "science": ["darkslategray", "white"],
+        "health": ["pink", "darkred"],
+        "technology": ["lightblue", "black"],
+        "sports": ["darkred", "white"],
+        "entertainment": ["orange", "darkred"]
+    }
+
+    let currentCategory = window.sessionStorage.getItem('category');
+    console.log(typeof(currentCategory));
+    
+    // Show or hide the category bar
+    if ( currentCategory === 'general') {
+        document.getElementById('category-bar').classList.add('d-none');
+    } else {
+        document.getElementById('category-bar').classList.remove('d-none');
+    }
+
+    document.getElementById('category-heading').innerHTML = currentCategory;
+    document.getElementById('category-bar').style.backgroundColor = categoryColors[currentCategory][0];
+    document.getElementById('category-bar').style.color = categoryColors[currentCategory][1];
+}

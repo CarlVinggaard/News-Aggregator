@@ -1,8 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800,900&display=swap');
-
-h2 {
-    font: bold 30px 'Raleway';
-}
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700|Raleway:300,400,500,600,700,800,900&display=swap');
 
 a {
     color: black;
@@ -24,10 +20,17 @@ a:hover {
 
 .navbar-search {
     max-width: 200px;
-    height: 24px;
+    height: 32px;
     position: fixed;
     top: 100px;
     right: 50px;
+    border-radius: 5px;
+    border: 0;
+    background-color: lightgrey;
+}
+
+.navbar-search:focus {
+    outline: none;
 }
 
 .searchfield-wide {
@@ -37,12 +40,12 @@ a:hover {
 
 nav {
     list-style-type: none;
-    font: 400 20px 'Raleway';
 }
 
 button {
     border: none;
     background-color: white;
+    font: 600 20px 'Open Sans';
 }
 
 button:focus {
@@ -56,9 +59,15 @@ img {
     vertical-align: top;
 }
 
+hr {
+    border-top: 1px solid rgba(0, 0, 0, 0.3);
+    max-width: 100%;
+}
+
 article {
     position: relative;
     height: 100%;
+    overflow: hidden;
 }
 
 .line {
@@ -67,19 +76,72 @@ article {
 }
 
 .section-container {
-    max-width: 1000px;
+    max-width: 1200px;
 }
-
-/* #content > div:nth-child(2n) {
-    background-color: #eee;
-} */
 
 .source-text {
     font: bold 13px 'Raleway';
-    color: blue;
+    color: darkblue;
 }
 
 .published-time {
     font: 400 13px 'Raleway';
     color: gray;
+}
+
+.top-story {
+    font: 400 20px 'Raleway';
+}
+
+#category-bar {
+    height: 90px;
+    background-color: lightblue;
+}
+
+/*--- RESPONSIVE FONT SIZES ---*/
+
+h1 {
+    font: 900 2rem 'Raleway';
+}
+
+h2, h3, h4 {
+    font: bold 1.5rem 'Raleway';
+}
+
+@media (min-width: 576px) {
+    
+    h1 {
+    font: 900 3rem 'Raleway';
+    }
+
+    h2 {
+        font: 800 1.5rem 'Raleway';
+    }
+
+    h3 {
+        font: bold 1.5rem 'Raleway';
+    }
+
+    h4 {
+        font: bold 1.5rem 'Raleway';
+    }
+}
+
+@media (min-width: 768px) {
+    
+    h1 {
+    font: 900 3rem 'Raleway';
+    }
+
+    h2 {
+        font: 800 2.5rem 'Raleway';
+    }
+
+    h3 {
+        font: bold 2rem 'Raleway';
+    }
+
+    h4 {
+        font: bold 1.5rem 'Raleway';
+    }
 }

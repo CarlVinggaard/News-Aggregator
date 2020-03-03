@@ -17,14 +17,13 @@ function renderRowType1(article) {
     newArticle.classList.add('row');
 
     let newLine = document.createElement('hr');
-    newLine.classList.add('col-12');
+    newLine.classList.add('col-12', 'd-none', 'd-sm-block');
 
     // Image
-    let newImgCol = document.createElement('div');
-    let newImg = document.createElement('img');
-    
     if (article.urlToImage) {
-        newImgCol.classList.add('col-12', 'col-sm-7', 'col-md-5', 'mb-2');
+        var newImgCol = document.createElement('div');
+        var newImg = document.createElement('img');
+        newImgCol.classList.add('col-12', 'col-sm-7', 'col-md-5', 'mb-3');
         newImg.src = article.urlToImage;
     }
 
@@ -42,17 +41,12 @@ function renderRowType1(article) {
     newHeading.innerText = removeSourceFromTitle(article.title);
 
     let newParagraph = document.createElement('p');
-    newParagraph.classList.add('mb-4');
+    newParagraph.classList.add('mb-4', 'd-none', 'd-sm-block');
     newParagraph.innerText = article.description;
 
     let newSource = document.createElement('p');
     newSource.classList.add('source-text');
-    newSource.innerText = article.source.name + ' | ';
-
-    let newCategory = document.createElement('span');
-    newCategory.classList.add(article.source.id, 'uppercase');
-    newCategory.innerHTML = 'news';
-    newSource.appendChild(newCategory);
+    newSource.innerText = article.source.name;
 
     // Append it together
     if (article.urlToImage) {

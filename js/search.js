@@ -1,12 +1,12 @@
-// Search with keywords
-function searchEverything(query) {
-    window.sessionStorage.setItem('query', query);
+// String the URL together from the user input and call the fetchData function.
+function showSearchResults() {
+    let query = window.sessionStorage.getItem('query');
 
     let url = 'https://newsapi.org/v2/everything?q=' + query;
     
-    if (document.getElementById('language')) { if (document.getElementById('language').value) {
-            url += '&language=' + document.getElementById('language').value;
-    }}
+    if (window.sessionStorage.getItem('language')) {
+            url += '&language=' + window.sessionStorage.getItem('language');
+    }
 
     if (document.getElementById('domains')) { if (document.getElementById('domains').value) {
         url += '&domains=' + document.getElementById('domains').value;
@@ -21,19 +21,17 @@ function searchEverything(query) {
     window.sessionStorage.setItem('url', url);
     
     fetchDataForSearch(url);
-
 }
 
-// Send GET request and do something with the response data
+// Send GET request and call the renderListFromResponseObject function with the response data.
 function fetchDataForSearch(url) {
 
     axios.get(url)
     .then(response => {
 
-        window.location.pathname = '/searchresults.html';
-    
-        window.sessionStorage.setItem('currentSearchResults', JSON.stringify(response.data.articles));
         window.sessionStorage.setItem('totalResults', response.data.totalResults);
+
+        renderListFromResponseObject(response.data.articles);       
 
     })
     .catch(err =>
@@ -42,15 +40,13 @@ function fetchDataForSearch(url) {
 }
 
 // Renders the contents of an array to the search results page.
-function renderSearchResults(responseArray) {
+function renderListFromResponseObject(responseArray) {
 
     let canvas = document.createElement('div');
 
-    console.log(responseArray);
-
     for (article of responseArray) {
         
-        newRow = renderSearchItem(article);
+        newRow = showSearchItem(article);
         canvas.appendChild(newRow);
     }
 
@@ -58,7 +54,7 @@ function renderSearchResults(responseArray) {
 }
 
 // Renders the html for a search result.
-function renderSearchItem(article) {
+function showSearchItem(article) {
 
     let newRow = document.createElement('div');
     newRow.classList.add('row', 'justify-content-center', 'my-1', 'pb-4');
@@ -93,7 +89,7 @@ function renderSearchItem(article) {
     newSource.classList.add('source-text')
     newSource.innerText = article.source.name;
 
-    // Put it together
+    // Append it together
     newTextCol.appendChild(newTime);
     newTextCol.appendChild(newHeading);
     newTextCol.appendChild(newParagraph);
@@ -106,7 +102,8 @@ function renderSearchItem(article) {
     return newRow;
 }
 
-function renderSearchMetaInfo() {
+// Renders html for the metainfo for the search.
+function showSearchMetaInfo() {
     let newRow = document.createElement('div');
     newRow.classList.add('row', 'justify-content-center', 'p-1');
 
@@ -122,4 +119,24 @@ function renderSearchMetaInfo() {
     newRow.appendChild(newCol);
 
     document.getElementById('metainfo').appendChild(newRow);
+}
+
+// Saves the entries from the user input fields to session storage.
+function saveUserInputToSessionStorage() {
+
+    if (document.getElementById('searchinput').value) {
+        window.sessionStorage.setItem('query', document.getElementById('searchinput').value);
+    }
+    
+    if (document.getElementById('domains').value) {
+        window.sessionStorage.setItem('domains', document.getElementById('domains').value);
+    }
+
+    if (document.getElementById('language').value) {
+        window.sessionStorage.setItem('language', document.getElementById('language').value);
+    }
+
+    if (document.getElementById('sortby').value) {
+        window.sessionStorage.setItem('sortby', document.getElementById('sortby').value);
+    }
 }
