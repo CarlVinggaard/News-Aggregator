@@ -90,7 +90,6 @@ function updateCategoryBar() {
     }
 
     let currentCategory = window.sessionStorage.getItem('category');
-    console.log(typeof(currentCategory));
     
     // Show or hide the category bar
     if ( currentCategory === 'general') {

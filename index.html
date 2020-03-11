@@ -5,12 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+    <!-- JQUERY -->
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+
     <!-- BOOTSTRAP -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- SELECTIZE -->
+    <script type="text/javascript" src="node_modules/selectize/dist/js/standalone/selectize.min.js"></script>
+    <link rel="stylesheet" href="node_modules/selectize/dist/css/selectize.default.css"></link>
 
     <!-- FONT AWESOME -->
-    <script src="https://kit.fontawesome.com/d9c8a97a10.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/d9c8a97a10.js" crossorigin="anonymous" SameSite="none"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/css/flag-icon.min.css" 
+        integrity="sha256-YjcCvXkdRVOucibC9I4mBS41lXPrWfqY2BnpskhZPnw=" crossorigin="anonymous" />
 
     <!-- AXIOS -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -24,21 +34,11 @@
     
     <header>
         <div class="row w-100">
-            <div class="col-12 justify-content-right">
-                <form class="ml-auto">
-                    <div class="form-group">
+            <div class="col-12">
+                <form>
+                    <div class="form-group region-select ml-auto my-5">
                         <label for="region">Region</label>
-                        <select id="region" onchange="showTopStories(); updateCategoryBar();">
-                            <option value="gb" default>Great Britain</option>
-                            <option value="cn">China</option>
-                            <option value="us">US</option>
-                            <option value="ca">Canada</option>
-                            <option value="ru">Russia</option>
-                            <option value="br">Brazil</option>
-                            <option value="au">Australia</option>
-                            <option value="de">Germany</option>
-                            <option value="jp">Japan</option>
-                            <option value="no">Norway</option>
+                        <select id="region" onchange="showTopStories();">
                         </select>
                     </div>
                 </form>
@@ -51,7 +51,7 @@
             <div class="row mx-auto">
 
                 <div class="col-12 d-flex">
-                    <a class="navbar-brand mx-auto text-center text-uppercase" href="index.html">Insert cool name/logo</a>
+                    <a class="navbar-brand mx-auto text-center text-uppercase" href="index.html"><span class="flag-icon flag-icon-gr"></span></a>
                 </div>
 
                 <div class="col-12">
@@ -61,7 +61,7 @@
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mx-auto d-table-row align-middle">
-                            <li class="nav-item active d-table-cell">
+                            <li class="nav-item d-table-cell">
                                 <button class="nav-link" onclick="window.sessionStorage.setItem('category', 'general'); showTopStories(); updateCategoryBar();">News</button>
                             </li>
                             <li class="nav-item d-table-cell">
@@ -101,11 +101,15 @@
     </header>
 
     <main class="wrapper container justify-content-center my-4">
+
+        <!-- CATEGORY BAR -->
         <div class="row">
             <div id="category-bar" class="col-12 d-none p-3">
                 <h2 id="category-heading" class="text-uppercase"></h2>
             </div>
         </div>
+
+        <!-- THE PAGE ITSELF -->
         <div id="content" class="my-5"></div>
     </main>
 
@@ -116,12 +120,8 @@
     <script src="js/renderRowType1.js"></script>
     <script src="js/renderRowType2.js"></script>
     <script src="js/renderRowType3.js"></script>
-    <script src="js/getCategoriesFromSourceList.js"></script>
     <script src="js/main.js"></script>
     <script src="js/search.js"></script>
-
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-        crossorigin="anonymous"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" 
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -133,5 +133,47 @@
         showTopStories();
     </script>
 
+    <script>
+        $('select').selectize({
+            valueField: "value",
+            labelField: "name",
+            options: [
+                {"value": "gb", "name": "Great Britain"},
+                {"value": "cn", "name": "China"},
+                {"value": "us", "name": "United States"},
+                {"value": "ca", "name": "Canada"},
+                {"value": "ru", "name": "Russia"},
+                {"value": "br", "name": "Brazil"},
+                {"value": "au", "name": "Australia"},
+                {"value": "de", "name": "Germany"},
+                {"value": "jp", "name": "Japan"},
+                {"value": "no", "name": "Norway"}
+            ],
+            render: {
+                option: function(item, escape) {
+                    return '<div class="country-option">'
+                    + '<span class="flag-icon flag-icon-' 
+                    + item.value 
+                    + '"></span> '
+                    + item.name
+                    + '</div>';
+                }
+            }
+        });
+    </script>
+
 </body>
 </html>
+
+<!--
+    <option value="gb" default >Great Britain</option>
+                            <option value="cn">China</option>
+                            <option value="us">US</option>
+                            <option value="ca">Canada</option>
+                            <option value="ru">Russia</option>
+                            <option value="br">Brazil</option>
+                            <option value="au">Australia</option>
+                            <option value="de">Germany</option>
+                            <option value="jp">Japan</option>
+                            <option value="no">Norway</option>
+ -->

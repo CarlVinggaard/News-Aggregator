@@ -5,6 +5,20 @@ a {
     text-decoration: none;
 }
 
+.region-select {
+    max-width: 200px;
+}
+
+.country-option {
+    margin: 8px;
+}
+
+.selectize-input {
+    border: 0;
+    box-shadow: 0 3px 11px #808080;
+    background-image: none !important;
+}
+
 .active {
     font-weight: bold;
 }
@@ -47,6 +61,15 @@ button {
     background-color: white;
     font: 600 20px 'Open Sans';
 }
+
+.nav-item > button:focus {
+    color: darkblue !important;
+}
+
+.nav-item > button:hover {
+    color: blue !important;
+}
+
 
 button:focus {
     outline: none;
@@ -96,6 +119,10 @@ article {
 #category-bar {
     height: 90px;
     background-color: lightblue;
+}
+
+#category-heading {
+    font-family: 'Franklin Gothic Medium', sans-serif !important;
 }
 
 /*--- RESPONSIVE FONT SIZES ---*/
