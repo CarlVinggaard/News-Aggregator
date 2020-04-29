@@ -3,10 +3,7 @@ function renderRowType1(article) {
 
     // General row
     let newRow = document.createElement('div');
-    newRow.classList.add('row', 'justify-content-center', 'my-1', 'pb-4');
-
-    let newCol = document.createElement('div');
-    newCol.classList.add('col-12', 'section-container');
+    newRow.classList.add('row', 'my-1', 'pb-4');
 
     // For each article
     let newAnchor = document.createElement('a');
@@ -62,8 +59,7 @@ function renderRowType1(article) {
     newArticle.appendChild(newLine);
 
     newAnchor.appendChild(newArticle);
-    newCol.appendChild(newAnchor);
-    newRow.appendChild(newCol);
+    newRow.appendChild(newAnchor);
 
     return newRow;
 }

@@ -33,18 +33,26 @@ a:hover {
 }
 
 .navbar-search {
-    max-width: 200px;
     height: 32px;
-    position: fixed;
-    top: 100px;
-    right: 50px;
     border-radius: 5px;
     border: 0;
-    background-color: lightgrey;
+    background-color: aliceblue;
+}
+
+.navbar-search {
+    transition: width 2s;
+}
+
+.navbar-search:hover {
+    width: 400px;
 }
 
 .navbar-search:focus {
     outline: none;
+}
+
+.navbar-toggler {
+    border: none;
 }
 
 .searchfield-wide {
@@ -66,10 +74,9 @@ button {
     color: darkblue !important;
 }
 
-.nav-item > button:hover {
-    color: blue !important;
+.nav-link:hover {
+    color: darkblue !important;
 }
-
 
 button:focus {
     outline: none;
@@ -123,6 +130,13 @@ article {
 
 #category-heading {
     font-family: 'Franklin Gothic Medium', sans-serif !important;
+}
+
+.footer {
+    height: 80px;
+    background-color: #1e3257;
+    color: white;
+    font-weight: bold;
 }
 
 /*--- RESPONSIVE FONT SIZES ---*/

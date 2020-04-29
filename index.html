@@ -33,71 +33,77 @@
 <body>
     
     <header>
-        <div class="row w-100">
-            <div class="col-12">
-                <form>
-                    <div class="form-group region-select ml-auto my-5">
-                        <label for="region">Region</label>
-                        <select id="region" onchange="showTopStories();">
-                        </select>
+        <div class="row px-4 justify-content-center">
+            <div class="col-12 section-container">
+                <div class="row">
+                    <div class="col-12">
+                        <form>
+                            <div class="form-group region-select ml-auto my-5">
+                                <label for="region">Region</label>
+                                <select id="region" onchange="showTopStories();">
+                                </select>
+                            </div>
+                        </form>
                     </div>
-                </form>
+                </div>
+
+                <!-- NAVBAR -->
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    
+                    <div class="row mx-xs-4 mx-lg-auto">
+
+                        <div class="col-12 d-flex">
+                            <a class="navbar-brand mx-auto text-center text-uppercase" href="index.html">GLOBAL NEWS</a>
+                        </div>
+
+                        <div class="col-12">
+                            <button class="navbar-toggler hamburger-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="navbar-nav mx-auto d-table-row align-middle">
+                                    <li class="nav-item d-table-cell">
+                                        <button class="nav-link" onclick="window.sessionStorage.setItem('category', 'general'); showTopStories(); updateCategoryBar();">News</button>
+                                    </li>
+                                    <li class="nav-item d-table-cell">
+                                        <button class="nav-link" onclick="window.sessionStorage.setItem('category', 'business'); showTopStories(); updateCategoryBar();">Business</button>
+                                    </li>
+                                    <li class="nav-item d-table-cell">
+                                        <button class="nav-link" onclick="window.sessionStorage.setItem('category', 'sports'); showTopStories(); updateCategoryBar();">Sports</button>
+                                    </li>
+                                    <li class="nav-item d-table-cell">
+                                        <button class="nav-link" onclick="window.sessionStorage.setItem('category', 'entertainment'); showTopStories(); updateCategoryBar();">Entertainment</button>
+                                    </li>
+                                    <li class="nav-item d-table-cell">
+                                        <button class="nav-link" onclick="window.sessionStorage.setItem('category', 'technology'); showTopStories(); updateCategoryBar();">Technology</button>
+                                    </li>
+                                    <li class="nav-item d-table-cell">
+                                        <button class="nav-link" onclick="window.sessionStorage.setItem('category', 'science'); showTopStories(); updateCategoryBar();">Science</button>
+                                    </li>
+                                    <li class="nav-item d-table-cell">
+                                        <button class="nav-link" onclick="window.sessionStorage.setItem('category', 'health'); showTopStories(); updateCategoryBar();">Health</button>
+                                    </li>
+                                    <li class="d-table-cell">
+                                        <a class="btn" onclick="
+                                            showSearchBar();
+                                            if (document.getElementById('searchinput').value) {
+                                                window.sessionStorage.setItem('query', document.getElementById('searchinput').value);
+                                                location.pathname = '/searchresults.html'}
+                                            ">
+                                            <i class="fas fa-search text-secondary"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-12">
+                                <input id="searchinput" type="text" class="navbar-search d-none w-0"></input>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
             </div>
         </div>
-
-        <!-- NAVBAR -->
-        <nav class="navbar navbar-expand-lg navbar-light">
-            
-            <div class="row mx-auto">
-
-                <div class="col-12 d-flex">
-                    <a class="navbar-brand mx-auto text-center text-uppercase" href="index.html"><span class="flag-icon flag-icon-gr"></span></a>
-                </div>
-
-                <div class="col-12">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav mx-auto d-table-row align-middle">
-                            <li class="nav-item d-table-cell">
-                                <button class="nav-link" onclick="window.sessionStorage.setItem('category', 'general'); showTopStories(); updateCategoryBar();">News</button>
-                            </li>
-                            <li class="nav-item d-table-cell">
-                                <button class="nav-link" onclick="window.sessionStorage.setItem('category', 'business'); showTopStories(); updateCategoryBar();">Business</button>
-                            </li>
-                            <li class="nav-item d-table-cell">
-                                <button class="nav-link" onclick="window.sessionStorage.setItem('category', 'sports'); showTopStories(); updateCategoryBar();">Sports</button>
-                            </li>
-                            <li class="nav-item d-table-cell">
-                                <button class="nav-link" onclick="window.sessionStorage.setItem('category', 'entertainment'); showTopStories(); updateCategoryBar();">Entertainment</button>
-                            </li>
-                            <li class="nav-item d-table-cell">
-                                <button class="nav-link" onclick="window.sessionStorage.setItem('category', 'technology'); showTopStories(); updateCategoryBar();">Technology</button>
-                            </li>
-                            <li class="nav-item d-table-cell">
-                                <button class="nav-link" onclick="window.sessionStorage.setItem('category', 'science'); showTopStories(); updateCategoryBar();">Science</button>
-                            </li>
-                            <li class="nav-item d-table-cell">
-                                <button class="nav-link" onclick="window.sessionStorage.setItem('category', 'health'); showTopStories(); updateCategoryBar();">Health</button>
-                            </li>
-                            <li class="d-table-cell input-group ">
-                                <input id="searchinput" type="text" class="navbar-search d-none py-2 px-4"></input> 
-                                <a class="btn" onclick="
-                                    showSearchBar();
-                                    if (document.getElementById('searchinput').value) {
-                                        window.sessionStorage.setItem('query', document.getElementById('searchinput').value);
-                                        location.pathname = '/searchresults.html'}
-                                    ">
-                                    <i class="fas fa-search text-secondary"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </nav>
     </header>
 
     <main class="wrapper container justify-content-center my-4">
@@ -110,10 +116,15 @@
         </div>
 
         <!-- THE PAGE ITSELF -->
-        <div id="content" class="my-5"></div>
+        <div class="row justify-content-center my-5 mx-3">
+            <div id="content" class="col-12 section-container"></div>
+        </div>
+
     </main>
 
-    <footer></footer>
+    <footer class="footer pt-4 d-flex justify-content-center">
+        <p>Powered by NewsAPI.org</p>
+    </footer>
     
     <!-- SCRIPT -->
     <script src="js/renderTopStory.js"></script>
@@ -129,12 +140,7 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
     <script>
-        window.sessionStorage.setItem('category', 'general');
-        showTopStories();
-    </script>
-
-    <script>
-        $('select').selectize({
+        const $select = $('select').selectize({
             valueField: "value",
             labelField: "name",
             options: [
@@ -157,23 +163,25 @@
                     + '"></span> '
                     + item.name
                     + '</div>';
+                },
+                item: function(item, escape) {
+                    return '<div>'
+                    + '<span class="flag-icon flag-icon-' 
+                    + item.value 
+                    + '"></span> '
+                    + item.name
+                    + '</div>';
                 }
             }
         });
+        $select[0].selectize.setValue("gb");
+        console.log($select[0].selectize);
+    </script>
+
+    <script>
+        window.sessionStorage.setItem('category', 'general');
+        showTopStories();
     </script>
 
 </body>
 </html>
-
-<!--
-    <option value="gb" default >Great Britain</option>
-                            <option value="cn">China</option>
-                            <option value="us">US</option>
-                            <option value="ca">Canada</option>
-                            <option value="ru">Russia</option>
-                            <option value="br">Brazil</option>
-                            <option value="au">Australia</option>
-                            <option value="de">Germany</option>
-                            <option value="jp">Japan</option>
-                            <option value="no">Norway</option>
- -->

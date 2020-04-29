@@ -1,9 +1,23 @@
+const categoryColors = {
+        "business": ["darkblue", "white"],
+        "science": ["darkslategray", "white"],
+        "health": ["pink", "darkred"],
+        "technology": ["lightblue", "black"],
+        "sports": ["darkred", "white"],
+        "entertainment": ["orange", "darkred"]
+    }
+
 // String the URL together from the user input and call the fetchData function.
 function showTopStories() {
     let url = 'https://newsapi.org/v2/top-headlines?pageSize=38';
     let category = window.sessionStorage.getItem('category');
+    let country = document.getElementById('region').value
     
-    url += '&country=' + document.getElementById('region').value;
+    if (country !== "") {
+        url += '&country=' + country;
+    } else {
+        url += '&country=gb'
+    }
     
     url += '&category=' + category;
 
@@ -31,8 +45,6 @@ function fetchDataForTopStories(url) {
 
 // Renders the contents of an array to the page.
 function renderPageFromResponseObject(responseArray) {
-
-    console.log(responseArray.length);
 
     let canvas = document.createElement('div');
 
@@ -73,21 +85,10 @@ function removeSourceFromTitle(string) {
 }
 
 function showSearchBar() {
-    document.getElementById('searchinput').classList.toggle('d-none');
+    document.getElementById('searchinput').classList.toggle('w-0', 'py-2', 'px-4');
 }
 
-
-
 function updateCategoryBar() {
-    
-    const categoryColors = {
-        "business": ["darkblue", "white"],
-        "science": ["darkslategray", "white"],
-        "health": ["pink", "darkred"],
-        "technology": ["lightblue", "black"],
-        "sports": ["darkred", "white"],
-        "entertainment": ["orange", "darkred"]
-    }
 
     let currentCategory = window.sessionStorage.getItem('category');
     
