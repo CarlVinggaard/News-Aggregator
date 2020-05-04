@@ -27,24 +27,34 @@ a:hover {
     text-decoration: none;
 }
 
-.search {
-    max-width: 1200px;
-    height: 24px;
-}
-
-.navbar-search {
+.search-container {
+    position: relative;
     height: 32px;
-    border-radius: 5px;
-    border: 0;
-    background-color: aliceblue;
+    max-width: 850px;
+    display: flex;
+    justify-content: right;
 }
 
 .navbar-search {
-    transition: width 2s;
+    position: absolute;
+    right: 0;
+    height: 32px;
+    border: 0;
+    border-radius: 2px;
+    width: 100%;
+    transition: width 0.15s ease-in 0.2s, height 0.15s ease-in;
 }
 
-.navbar-search:hover {
-    width: 400px;
+.search-border {
+    border: 2px solid #1e3257 !important;
+}
+
+.w-0 {
+    width: 0 !important;
+}
+
+.h-0 {
+    height: 0 !important;
 }
 
 .navbar-search:focus {
@@ -53,6 +63,10 @@ a:hover {
 
 .navbar-toggler {
     border: none;
+}
+
+.navbar-collapse {
+    flex-grow: 0;
 }
 
 .searchfield-wide {
@@ -121,6 +135,11 @@ article {
 
 .top-story {
     font: 400 20px 'Raleway';
+}
+
+.bg-gray {
+    padding: 20px 20px 0 20px;
+    background-color: #f2f2f2;
 }
 
 #category-bar {

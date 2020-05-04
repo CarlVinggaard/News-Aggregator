@@ -1,4 +1,5 @@
 const categoryColors = {
+        "general": ["#1e3257", "white"],
         "business": ["darkblue", "white"],
         "science": ["darkslategray", "white"],
         "health": ["pink", "darkred"],
@@ -22,8 +23,6 @@ function showTopStories() {
     url += '&category=' + category;
 
     url += '&apiKey=081f564d356d457982b0cf109a72aea8';
-    
-    console.log(url);
 
     fetchDataForTopStories(url);
 }
@@ -34,7 +33,6 @@ function fetchDataForTopStories(url) {
     axios.get(url)
     .then(response => {
         
-        console.log(response);
         renderPageFromResponseObject(response.data.articles);
 
     })
@@ -85,21 +83,23 @@ function removeSourceFromTitle(string) {
 }
 
 function showSearchBar() {
-    document.getElementById('searchinput').classList.toggle('w-0', 'py-2', 'px-4');
+    document.getElementById('searchinput').classList.toggle('w-0');
+    document.getElementById('searchinput').classList.toggle('h-0');
+    document.getElementById('searchinput').classList.toggle('search-border');
 }
 
 function updateCategoryBar() {
-
     let currentCategory = window.sessionStorage.getItem('category');
-    
-    // Show or hide the category bar
-    if ( currentCategory === 'general') {
-        document.getElementById('category-bar').classList.add('d-none');
+    let currentRegion = document.getElementById('region').value;
+
+    if (currentCategory === 'general') {
+        document.getElementById('category-heading').innerHTML = 'top stories';
     } else {
-        document.getElementById('category-bar').classList.remove('d-none');
+        document.getElementById('category-heading').innerHTML = currentCategory;
     }
 
-    document.getElementById('category-heading').innerHTML = currentCategory;
+    document.getElementById('region-heading').innerHTML = currentRegion;
+
     document.getElementById('category-bar').style.backgroundColor = categoryColors[currentCategory][0];
     document.getElementById('category-bar').style.color = categoryColors[currentCategory][1];
 }

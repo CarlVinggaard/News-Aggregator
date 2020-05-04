@@ -3,10 +3,10 @@ function renderRowType3(article1, article2, article3) {
 
     // General row
     let newRow = document.createElement('div');
-    newRow.classList.add('row', 'my-1', 'pb-4');
+    newRow.classList.add('row', 'my-1', 'pb-3');
 
     let newRow2 = document.createElement('div');
-    newRow2.classList.add('row');
+    newRow2.classList.add('row', 'bg-gray');
 
     // For each article
     let newAnchor1 = document.createElement('a');
