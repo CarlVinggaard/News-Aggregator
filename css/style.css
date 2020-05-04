@@ -19,8 +19,9 @@ a {
     background-image: none !important;
 }
 
-.active {
-    font-weight: bold;
+.navitem-active {
+    color: #1e3257;
+    border-bottom: 3px solid #1e3257;
 }
 
 a:hover {

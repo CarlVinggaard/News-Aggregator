@@ -83,9 +83,7 @@ function removeSourceFromTitle(string) {
 }
 
 function showSearchBar() {
-    document.getElementById('searchinput').classList.toggle('w-0');
-    document.getElementById('searchinput').classList.toggle('h-0');
-    document.getElementById('searchinput').classList.toggle('search-border');
+    $('#searchinput').toggleClass(['w-0', 'h-0', 'search-border']);
 }
 
 function updateCategoryBar() {
@@ -102,4 +100,21 @@ function updateCategoryBar() {
 
     document.getElementById('category-bar').style.backgroundColor = categoryColors[currentCategory][0];
     document.getElementById('category-bar').style.color = categoryColors[currentCategory][1];
+}
+
+function setActiveNavItem() {
+    currentCategory = window.sessionStorage.getItem('category');
+    
+    $('#navbar li').removeClass('navitem-active');
+    $('#navbar li').each(function() {
+        if ($(this).attr('id') === currentCategory) {
+            $(this).addClass('navitem-active');
+        }
+    })
+}
+
+function updatePage() {
+    updateCategoryBar();
+    showTopStories();
+    setActiveNavItem();
 }
