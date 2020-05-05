@@ -30,7 +30,7 @@ a:hover {
 
 .search-container {
     position: relative;
-    height: 32px;
+    height: 64px;
     max-width: 850px;
     display: flex;
     justify-content: right;
@@ -38,6 +38,7 @@ a:hover {
 
 .navbar-search {
     position: absolute;
+    top: 24px;
     right: 0;
     height: 32px;
     border: 0;
@@ -56,6 +57,10 @@ a:hover {
 
 .h-0 {
     height: 0 !important;
+}
+
+.opacity-0 {
+    opacity: 0;
 }
 
 .navbar-search:focus {

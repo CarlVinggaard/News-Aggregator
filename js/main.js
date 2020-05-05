@@ -12,12 +12,12 @@ const categoryColors = {
 function showTopStories() {
     let url = 'https://newsapi.org/v2/top-headlines?pageSize=38';
     let category = window.sessionStorage.getItem('category');
-    let country = document.getElementById('region').value
+    let country = $('#region').val();
     
     if (country !== "") {
         url += '&country=' + country;
     } else {
-        url += '&country=gb'
+        url += '&country=gb';
     }
     
     url += '&category=' + category;
@@ -72,7 +72,7 @@ function renderPageFromResponseObject(responseArray) {
         canvas.appendChild(newRow);
     }
 
-    document.getElementById('content').innerHTML = canvas.innerHTML;
+    $('#content').html(canvas.innerHTML);
 }
 
 // News source (e.g. bbc.co.uk) is included in the title after " - ", so this function removes it.
@@ -84,22 +84,23 @@ function removeSourceFromTitle(string) {
 
 function showSearchBar() {
     $('#searchinput').toggleClass(['w-0', 'h-0', 'search-border']);
+    $('#searchheading').toggleClass('opacity-0');
 }
 
 function updateCategoryBar() {
     let currentCategory = window.sessionStorage.getItem('category');
-    let currentRegion = document.getElementById('region').value;
+    let currentRegion = $('#region').val();
 
     if (currentCategory === 'general') {
-        document.getElementById('category-heading').innerHTML = 'top stories';
+        $('#category-heading').html('top stories');
     } else {
-        document.getElementById('category-heading').innerHTML = currentCategory;
+        $('#category-heading').html(currentCategory);
     }
 
-    document.getElementById('region-heading').innerHTML = currentRegion;
+    $('#region-heading').html(currentRegion);
 
-    document.getElementById('category-bar').style.backgroundColor = categoryColors[currentCategory][0];
-    document.getElementById('category-bar').style.color = categoryColors[currentCategory][1];
+    $('#category-bar').css('background-color', categoryColors[currentCategory][0]);
+    $('#category-bar').css('color', categoryColors[currentCategory][1]);
 }
 
 function setActiveNavItem() {

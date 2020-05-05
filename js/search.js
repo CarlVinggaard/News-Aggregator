@@ -8,12 +8,8 @@ function showSearchResults() {
             url += '&language=' + window.sessionStorage.getItem('language');
     }
 
-    if (document.getElementById('domains')) { if (document.getElementById('domains').value) {
-        url += '&domains=' + document.getElementById('domains').value;
-    }}
-
-    if (document.getElementById('sortby')) { if (document.getElementById('sortby').value) {
-        url += '&sortBy=' + document.getElementById('sortby').value;
+    if ($('#sortby')) { if ($('#sortby').val()) {
+        url += '&sortBy=' + $('#sortby').val();
     }}
 
     url += '&apiKey=081f564d356d457982b0cf109a72aea8';
@@ -50,7 +46,7 @@ function renderListFromResponseObject(responseArray) {
         canvas.appendChild(newRow);
     }
 
-    document.getElementById('searchresults').innerHTML = canvas.innerHTML;
+    $('#searchresults').html(canvas.innerHTML);
 }
 
 // Renders the html for a search result.
@@ -118,25 +114,21 @@ function showSearchMetaInfo() {
     newCol.appendChild(newParagraph);
     newRow.appendChild(newCol);
 
-    document.getElementById('metainfo').appendChild(newRow);
+    $('#metainfo').appendChild(newRow);
 }
 
 // Saves the entries from the user input fields to session storage.
 function saveUserInputToSessionStorage() {
 
-    if (document.getElementById('searchinput').value) {
-        window.sessionStorage.setItem('query', document.getElementById('searchinput').value);
-    }
-    
-    if (document.getElementById('domains').value) {
-        window.sessionStorage.setItem('domains', document.getElementById('domains').value);
+    if ($('#searchinput').val()) {
+        window.sessionStorage.setItem('query', $('#searchinput').val());
     }
 
-    if (document.getElementById('language').value) {
-        window.sessionStorage.setItem('language', document.getElementById('language').value);
+    if ($('#language').val()) {
+        window.sessionStorage.setItem('language', $('#language').val());
     }
 
-    if (document.getElementById('sortby').value) {
-        window.sessionStorage.setItem('sortby', document.getElementById('sortby').value);
+    if ($('#sortby').val()) {
+        window.sessionStorage.setItem('sortby', $('#sortby').val());
     }
 }
