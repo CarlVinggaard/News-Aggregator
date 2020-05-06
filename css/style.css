@@ -21,7 +21,6 @@ button:focus {
 
 img {
     width: 100%;
-    min-height: 250px;
     object-fit: cover;
     vertical-align: top;
 }
@@ -149,7 +148,7 @@ article {
 }
 
 .navbar-search {
-    height: 32px;
+    height: 40px;
     border: 0;
     border-radius: 2px;
     width: 100%;
@@ -161,7 +160,7 @@ article {
 }
 
 .searchfield-wide {
-    width: 95%;
+    width: calc(100% - 50px);
 }
 
 .filter-dropdown {
@@ -170,11 +169,22 @@ article {
     border-radius: 4px;
 }
 
+.current-query {
+    font-size: 1.25rem;
+    color: #1e3257;
+}
+
 #metainfo {
-    height: 32px;
+    height: 64px;
+    font-size: 0.9rem;
+    color: gray;
 }
 
 /*--- GENERAL UTILITY ---*/
+
+.section-container {
+    max-width: 1200px;
+}
 
 .w-0 {
     width: 0 !important;
@@ -190,10 +200,6 @@ article {
 
 .top-margin {
     height: 168px;
-}
-
-.section-container {
-    max-width: 1200px;
 }
 
 /*--- RESPONSIVE FONT SIZES ---*/
@@ -241,5 +247,13 @@ h2, h3, h4 {
 
     h4 {
         font: bold 1.5rem 'Raleway';
+    }
+}
+
+/*--- OTHER RESPONSIVE CLASSES ---*/
+
+@media screen and (min-width: 575px) {
+    .mh-100px {
+        max-height: 100px;
     }
 }

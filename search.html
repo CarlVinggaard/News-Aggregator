@@ -82,13 +82,13 @@
         </nav>
     </header>
 
-    <main class="container justify-content-center mb-4">
+    <main class="container justify-content-center px-3 mb-4">
 
         <!-- SEARCH BAR -->
         <div class="row justify-content-center my-4">
             <div class="col-12 section-container">
                 <input id="searchinput" type="text" placeholder="Search news articles from the whole world ..." class="navbar-search search-border searchfield-wide px-3"></input>
-                <a id="searchbutton" class="btn" onclick="saveUserInputToSessionStorage(); showSearchResults(); showSearchMetaInfo();">
+                <a id="searchbutton" class="btn" onclick="saveUserInputToSessionStorage(); showSearchResults();">
                     <i class="fas fa-search"></i>
                 </a>
             </div>
@@ -101,8 +101,8 @@
                     <form class="mx-auto d-flex justify-content-around">
                         
                         <div class="form-group">
-                            <label for="language">Language</label>
-                            <select id="language" class="filter-dropdown p-2 ml-3" onchange="showSearchResults();">
+                            <label for="language" class="mr-3">Language</label>
+                            <select id="language" class="filter-dropdown p-2" onchange="showSearchResults();">
                                 <option value="en">English</option>
                                 <option value="cn">Chinese</option>
                                 <option value="es">Spanish</option>
@@ -114,8 +114,8 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="sortby">Sort by</label>
-                            <select id="sortby" class="filter-dropdown p-2 ml-3" onchange="showSearchResults();">
+                            <label for="sortby"  class="mr-3">Sort by</label>
+                            <select id="sortby" class="filter-dropdown p-2" onchange="showSearchResults(); showSearchMetaInfo();">
                                 <option value="publishedAt">Recency</option>
                                 <option value="relevancy">Relevancy</option>
                                 <option value="popularity">Popularity</option>
@@ -128,7 +128,7 @@
         </div>
 
         <!-- SEARCH METAINFO -->
-        <div id="metainfo"></div>
+        <div id="metainfo" class="mb-2"></div>
         
         <!-- SEARCH RESULTS -->
         <div id="searchresults" class="my-5"></div>
@@ -143,6 +143,10 @@
         </div>
     
     </main>
+
+    <footer class="footer pt-4 d-flex justify-content-center">
+        <p>Powered by NewsAPI.org</p>
+    </footer>
     
     <!-- SCRIPT -->
 
@@ -161,7 +165,6 @@
 
     <script>
         showSearchResults();
-        showSearchMetaInfo();
 
         document.title = window.sessionStorage.getItem('query');
     </script>

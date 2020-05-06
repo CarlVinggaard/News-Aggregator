@@ -93,14 +93,14 @@ function renderRowType2(article1, article2) {
     newText1.appendChild(newHeading1);
     newText1.appendChild(newParagraph1);
     newText1.appendChild(newSource1);
-    article1.urlToImage ? newArticle1.appendChild(newImg1): null;
+    article1.urlToImage && newArticle1.appendChild(newImg1);
     newArticle1.appendChild(newText1);
 
     newText2.appendChild(newTime2);
     newText2.appendChild(newHeading2);
     newText2.appendChild(newParagraph2);
     newText2.appendChild(newSource2);
-    article2.urlToImage ? newArticle2.appendChild(newImg2): null;
+    article2.urlToImage && newArticle2.appendChild(newImg2);
     newArticle2.appendChild(newText2);
 
     newAnchor1.appendChild(newArticle1);

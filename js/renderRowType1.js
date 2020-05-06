@@ -27,7 +27,7 @@ function renderRowType1(article) {
     // Text
     let newTextCol = document.createElement('div');
     newTextCol.classList.add('col-12');
-    article.urlToImage ? newTextCol.classList.add('col-sm-5', 'col-md-7'): null;
+    article.urlToImage && newTextCol.classList.add('col-sm-5', 'col-md-7');
 
     let date = new Date(article.publishedAt);
     let newTime = document.createElement('p');

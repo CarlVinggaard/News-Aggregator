@@ -5,12 +5,14 @@ function showSearchResults() {
     let url = 'https://newsapi.org/v2/everything?q=' + query;
     
     if (window.sessionStorage.getItem('language')) {
-            url += '&language=' + window.sessionStorage.getItem('language');
+            url += '&language=' + $('#language').val();
     }
 
     if ($('#sortby')) { if ($('#sortby').val()) {
         url += '&sortBy=' + $('#sortby').val();
     }}
+
+    url += '&pageSize=10'
 
     url += '&apiKey=081f564d356d457982b0cf109a72aea8';
 
@@ -22,12 +24,16 @@ function showSearchResults() {
 // Send GET request and call the renderListFromResponseObject function with the response data.
 function fetchDataForSearch(url) {
 
+    console.log(url);
+
     axios.get(url)
     .then(response => {
 
         window.sessionStorage.setItem('totalResults', response.data.totalResults);
 
-        renderListFromResponseObject(response.data.articles);       
+        renderListFromResponseObject(response.data.articles);
+        showSearchMetaInfo();
+
 
     })
     .catch(err =>
@@ -66,7 +72,7 @@ function showSearchItem(article) {
     newArticle.classList.add('row');
 
     let newLine = document.createElement('hr');
-    newLine.classList.add('col-12');
+    newLine.classList.add('col-12', 'd-none', 'd-sm-block', 'px-3');
 
     // Image
     var newImgCol = document.createElement('div');
@@ -74,6 +80,7 @@ function showSearchItem(article) {
 
     if (article.urlToImage) {
         var newImg = document.createElement('img');
+        newImg.classList.add('mh-100px');
         newImg.src = article.urlToImage;
     }
 
@@ -86,7 +93,7 @@ function showSearchItem(article) {
     newTime.classList.add('published-time');
     newTime.innerHTML = date.toString().slice(0,21);
 
-    let newHeading = document.createElement('h3');
+    let newHeading = document.createElement('h4');
     newHeading.innerText = article.title;
 
     let newParagraph = document.createElement('p');
@@ -100,7 +107,6 @@ function showSearchItem(article) {
     // Append it together
     newTextCol.appendChild(newTime);
     newTextCol.appendChild(newHeading);
-    newTextCol.appendChild(newParagraph);
     newTextCol.appendChild(newSource);
 
     if (article.urlToImage) {
@@ -125,12 +131,21 @@ function showSearchMetaInfo() {
     let newCol = document.createElement('div');
     newCol.classList.add('col-12', 'section-container');
 
+    let newSpan = document.createElement('span');
+    newSpan.classList.add('ml-2', 'font-weight-normal', 'current-query');
+    newSpan.innerHTML = window.sessionStorage.getItem('query');
+
     let newParagraph = document.createElement('p');
-    newParagraph.classList.add('mx-3');
-    newParagraph.innerHTML = "Showing results for: " + window.sessionStorage.getItem('query');
+    newParagraph.classList.add('mb-1', 'font-weight-bold', 'text-gray');
+    newParagraph.innerHTML = 'Showing results for ';
+    newParagraph.appendChild(newSpan);
+
+    let newParagraph2 = document.createElement('p');
+    newParagraph2.innerHTML = 'Showing 10 of ' + window.sessionStorage.getItem('totalResults') + ' results';
 
     // Put it together
     newCol.appendChild(newParagraph);
+    newCol.appendChild(newParagraph2);
     newRow.appendChild(newCol);
 
     $('#metainfo').html(newRow);

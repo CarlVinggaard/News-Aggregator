@@ -31,7 +31,6 @@ function renderRowType3(article1, article2, article3) {
     let newArticle3 = document.createElement('article');
 
     // Line(s) at the bottom
-    
     let newLineRow = document.createElement('div');
     newLineRow.classList.add('row');
 
@@ -129,21 +128,21 @@ function renderRowType3(article1, article2, article3) {
     newText1.appendChild(newHeading1);
     newText1.appendChild(newParagraph1);
     newText1.appendChild(newSource1);
-    article1.urlToImage ? newArticle1.appendChild(newImg1) : null;
+    article1.urlToImage && newArticle1.appendChild(newImg1);
     newArticle1.appendChild(newText1);
 
     newText2.appendChild(newTime2);
     newText2.appendChild(newHeading2);
     newText2.appendChild(newParagraph2);
     newText2.appendChild(newSource2);
-    article2.urlToImage ? newArticle2.appendChild(newImg2) : null;
+    article2.urlToImage && newArticle2.appendChild(newImg2);
     newArticle2.appendChild(newText2);
 
     newText3.appendChild(newTime3);
     newText3.appendChild(newHeading3);
     newText3.appendChild(newParagraph3);
     newText3.appendChild(newSource3);
-    article3.urlToImage ? newArticle3.appendChild(newImg3) : null;
+    article3.urlToImage && newArticle3.appendChild(newImg3);
     newArticle3.appendChild(newText3);
 
     newAnchor1.appendChild(newArticle1);
