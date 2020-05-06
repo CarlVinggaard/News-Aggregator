@@ -87,6 +87,7 @@ function showSearchBar() {
     $('#searchheading').toggleClass('opacity-0');
 }
 
+// The category bar changes color and text based on the chosen category
 function updateCategoryBar() {
     let currentCategory = window.sessionStorage.getItem('category');
     let currentRegion = $('#region').val();

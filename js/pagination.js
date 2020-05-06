@@ -25,6 +25,7 @@ function showPaginationButtons() {
     disablePaginationButtons();
 }
 
+// Disable or enable the pagination buttons if they can't be used
 function disablePaginationButtons() {
     let currentPage = parseInt(window.sessionStorage.getItem('page'));
     let totalResults = parseInt(window.sessionStorage.getItem('totalResults'));
