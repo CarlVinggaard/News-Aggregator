@@ -1,28 +1,54 @@
-# Galactica - the Interplanetary Space Travel Agency
+# NewsWorld - The latest news from around the world
 
-This is a ... assignment, done as part of the full-stack developer course at Code Institute. The purpose of the project 
+This is an interactive frontend programming assignment, done as part of the full-stack developer course at Code Institute. The purpose of the project
 is to implement and display what I have learned about Javascript, APIs and web design.
 
-The project is a news aggregator website called ... The purpose of the website is to ... The style is ... The website 
-displays ...
+The project is a news aggregator website called NewsWorld. The purpose of the website is to allow users to view top stories from various countries, 
+and search news by keyword from more than 50,000 sources worldwide. The website displays the headlines, images and summaries of news articles, and links
+to the actual sources.
 
-Newsapi.org ...
+The website is powered by newsapi.org, a powerful news aggregation API.
 
 The website is written in HTML5, CSS3 and Javascript. A number of javascript libraries were used to ... The code was written in the Gitpod IDE.
 
 ## User Experience
 
-The target audience is ...
+The target audience consists of people who want to get an overview of news from multiple countries and a variety of sources across the world.
 
 The functional and usability requirements for the site include:
-- ..
-- ..
+- The site should provide an easily digestible overview of news stories
+- The site layout should not be too monotone or boring
+- The site should display top news headlines from a variety of countries within a variety of categories
+- Navigation between the categories should be seamless and easy to understand
+- The user should be able to search globally for news by keywords
+- The user should be able to sort the search results by recency, popularity or relevancy
+- The user should be able to search the news by language
+- The user should be able to easily navigate to the original news source
 
 ### User Flow
 
-Standardized user flows ??
+User flow no. 1:
+1. A user wants to check out news and business headlines in a number of countries (e.g. Great Britain, China and the United States).
+2. The default selection is Great Britain.
+3. The user can easily view top news from other countries by selecting a different country in the region selector in the top right corner.
+4. The user can easily find business news by clicking the business tab.
+
+User flow no. 2:
+1. The user wants to search specific news about a topic in their native language, e.g. Portuguese.
+2. The user opens the search field and enters the topic.
+3. The user can simply select Portuguese in the language select menu and filter by relevancy to the topic.
 
 ### Style and Design
+
+The style of the site is very simple without too many 'disturbing' elements. The attention of the user should naturally be directed towards 
+the images and headlines, so a plain white background with a plain navigation menu and buttons makes the most sense. Structure is conveyed 
+with spacing, horizontal lines below some articles and in some cases with a light gray box around a set of articles.
+
+In order to make the design more interesting, a design function has been implemented that places the articles into different 'rows' with 
+different layouts. The rows are selected randomly by the design function. The different types of rows and the varying layout makes the page
+more interesting to the reader.
+
+When searching by keyword, the results are presented in a more ordered manner, as is common with search results.
 
 ### Clickable Prototype
 
@@ -46,6 +72,9 @@ interface design tool. The prototype can be accessed in Figma in the browser wit
     - All CSS code written as part of this project is contained in assets/css/style.css.
 
 - Javascript
+
+- jQuery 3.5.1
+    - Used for easy DOM manipulation.
 
 - Bootstrap 4.4.1
     - Used extensively to produce responsive layout, padding, margins, sizing etc.
@@ -83,22 +112,14 @@ interface design tool. The prototype can be accessed in Figma in the browser wit
     - Safari
 
 - Important tests are:
-    - Test that the content is displayed properly on small and large screens (all three pages)
+    - Test that the content is displayed properly on small and large screens (both front page and search results)
     - Test that the navbar menu collapses on small screens
     - Test that the collapsed navbar works correctly
-
-    - Index.html:
-        - Check that the slider/carousel changes image every 8 seconds
-        - Test that the buttons on the slider link to the correct section of the journeys.html page
-        - Test that the buttons in the 'journeys' section of the front page redirect correctly
-
-    - Journeys.html:
-        - Test that the buttons redirect to the order.html page
-
-    - Order.html:
-        - Test that the input fields are all required by submitting an incomplete form
-        - Test that the e-mail field requirement works correctly, by submitting an invalid e-mail address (e.g. one that lacks '@')
-        - Test that the datepicker works correctly by filling out the 'From' and 'To' fields without typing the numbers
+    - Test that the links work correctly in all row 'types' (the top story, and rows with one, two or three articles in them)
+    - Test that the navigation between categories works
+    - Test that navigating between countries works
+    - Test that searching a keyword works
+    - Test that the search filters work 
 
 
 ## Deployment
@@ -120,3 +141,5 @@ The website is deployed to GitHub pages and can be accessed at: ..
 The development and deployment versions are identical.
 
 ## Credits
+
+- newsapi.org
