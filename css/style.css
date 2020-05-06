@@ -9,10 +9,6 @@ a:hover {
     text-decoration: none;
 }
 
-button {
-    
-}
-
 button:focus {
     outline: none;
 }
@@ -194,7 +190,6 @@ article {
 }
 
 .pagination-button {
-    width: 125px;
     border: 0;
     border-radius: 4px;
     background-color: #1e3257;
@@ -227,6 +222,10 @@ article {
 .top-margin {
     height: 168px;
 }
+
+.img-mh {
+        max-height: 200px;
+    }
 
 /*--- RESPONSIVE FONT SIZES ---*/
 
@@ -281,5 +280,9 @@ h2, h3, h4 {
 @media screen and (min-width: 575px) {
     .mh-100px {
         max-height: 100px;
+    }
+
+    .pagination-button {
+        width: 125px;
     }
 }

@@ -82,7 +82,7 @@ function showSearchItem(article) {
 
     if (article.urlToImage) {
         var newImg = document.createElement('img');
-        newImg.classList.add('mh-100px');
+        newImg.classList.add('img-mh');
         newImg.src = article.urlToImage;
     }
 
