@@ -5,6 +5,34 @@ a {
     text-decoration: none;
 }
 
+a:hover {
+    text-decoration: none;
+}
+
+button {
+    border: none;
+    background-color: white;
+    font: 600 20px 'Open Sans';
+}
+
+button:focus {
+    outline: none;
+}
+
+img {
+    width: 100%;
+    min-height: 250px;
+    object-fit: cover;
+    vertical-align: top;
+}
+
+hr {
+    border-top: 1px solid rgba(0, 0, 0, 0.3);
+    max-width: 100%;
+}
+
+/*--- REGION SELECT ---*/
+
 .region-select {
     max-width: 200px;
 }
@@ -19,6 +47,12 @@ a {
     background-image: none !important;
 }
 
+/*--- NAVIGATION MENU ---*/
+
+nav {
+    list-style-type: none;
+}
+
 .navitem-active {
     border-bottom: 3px solid #1e3257;
 }
@@ -27,9 +61,78 @@ a {
     color: #1e3257 !important;
 }
 
-a:hover {
-    text-decoration: none;
+.navbar-search:focus {
+    outline: none;
 }
+
+.navbar-toggler {
+    border: none;
+}
+
+.navbar-collapse {
+    flex-grow: 0;
+}
+
+.nav-item > button:focus {
+    color: darkblue !important;
+}
+
+.nav-link:hover {
+    color: darkblue !important;
+}
+
+/*--- ARTICLES ---*/
+
+article {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+}
+
+.line {
+    position: absolute;
+    bottom: 0;
+}
+
+.top-story {
+    font: 400 20px 'Raleway';
+}
+
+.source-text {
+    font: bold 13px 'Raleway';
+    color: darkblue;
+}
+
+.published-time {
+    font: 400 13px 'Raleway';
+    color: gray;
+}
+
+.bg-gray {
+    padding: 20px 20px 0 20px;
+    background-color: #f2f2f2;
+}
+
+/*--- CATEGORY BAR ---*/
+
+#category-bar {
+    height: 90px;
+}
+
+#category-heading {
+    font-family: 'Franklin Gothic Medium', sans-serif !important;
+}
+
+/*--- FOOTER ---*/
+
+.footer {
+    height: 80px;
+    background-color: #1e3257;
+    color: white;
+    font-weight: bold;
+}
+
+/*--- SEARCH BAR AND FILTERS ---*/
 
 .search-container {
     position: relative;
@@ -57,6 +160,22 @@ a:hover {
     border: 2px solid #1e3257 !important;
 }
 
+.searchfield-wide {
+    width: 95%;
+}
+
+.filter-dropdown {
+    border: 0;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+}
+
+#metainfo {
+    height: 32px;
+}
+
+/*--- GENERAL UTILITY ---*/
+
 .w-0 {
     width: 0 !important;
 }
@@ -73,104 +192,8 @@ a:hover {
     height: 168px;
 }
 
-.navbar-search:focus {
-    outline: none;
-}
-
-.navbar-toggler {
-    border: none;
-}
-
-.navbar-collapse {
-    flex-grow: 0;
-}
-
-.searchfield-wide {
-    width: 95%;
-}
-
-nav {
-    list-style-type: none;
-}
-
-button {
-    border: none;
-    background-color: white;
-    font: 600 20px 'Open Sans';
-}
-
-.nav-item > button:focus {
-    color: darkblue !important;
-}
-
-.nav-link:hover {
-    color: darkblue !important;
-}
-
-button:focus {
-    outline: none;
-}
-
-img {
-    width: 100%;
-    min-height: 250px;
-    object-fit: cover;
-    vertical-align: top;
-}
-
-hr {
-    border-top: 1px solid rgba(0, 0, 0, 0.3);
-    max-width: 100%;
-}
-
-article {
-    position: relative;
-    height: 100%;
-    overflow: hidden;
-}
-
-.line {
-    position: absolute;
-    bottom: 0;
-}
-
 .section-container {
     max-width: 1200px;
-}
-
-.source-text {
-    font: bold 13px 'Raleway';
-    color: darkblue;
-}
-
-.published-time {
-    font: 400 13px 'Raleway';
-    color: gray;
-}
-
-.top-story {
-    font: 400 20px 'Raleway';
-}
-
-.bg-gray {
-    padding: 20px 20px 0 20px;
-    background-color: #f2f2f2;
-}
-
-#category-bar {
-    height: 90px;
-    background-color: lightblue;
-}
-
-#category-heading {
-    font-family: 'Franklin Gothic Medium', sans-serif !important;
-}
-
-.footer {
-    height: 80px;
-    background-color: #1e3257;
-    color: white;
-    font-weight: bold;
 }
 
 /*--- RESPONSIVE FONT SIZES ---*/

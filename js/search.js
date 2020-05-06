@@ -62,19 +62,31 @@ function showSearchItem(article) {
     newAnchor.href = article.url;
     newAnchor.target = '_blank';
 
+    let newArticle = document.createElement('article');
+    newArticle.classList.add('row');
+
     let newLine = document.createElement('hr');
     newLine.classList.add('col-12');
 
+    // Image
+    var newImgCol = document.createElement('div');
+    newImgCol.classList.add('col-12', 'col-sm-3');
+
+    if (article.urlToImage) {
+        var newImg = document.createElement('img');
+        newImg.src = article.urlToImage;
+    }
+
     // Text
     let newTextCol = document.createElement('div');
-    newTextCol.classList.add('col-12');
+    newTextCol.classList.add('col-12', 'col-sm-9');
 
     let date = new Date(article.publishedAt);
     let newTime = document.createElement('p');
     newTime.classList.add('published-time');
     newTime.innerHTML = date.toString().slice(0,21);
 
-    let newHeading = document.createElement('h2');
+    let newHeading = document.createElement('h3');
     newHeading.innerText = article.title;
 
     let newParagraph = document.createElement('p');
@@ -90,7 +102,14 @@ function showSearchItem(article) {
     newTextCol.appendChild(newHeading);
     newTextCol.appendChild(newParagraph);
     newTextCol.appendChild(newSource);
-    newAnchor.appendChild(newTextCol);
+
+    if (article.urlToImage) {
+        newImgCol.appendChild(newImg);
+    }
+
+    newArticle.appendChild(newImgCol);
+    newArticle.appendChild(newTextCol);
+    newAnchor.appendChild(newArticle);
     newCol.appendChild(newAnchor);
     newRow.appendChild(newCol);
     newRow.appendChild(newLine);
@@ -114,7 +133,7 @@ function showSearchMetaInfo() {
     newCol.appendChild(newParagraph);
     newRow.appendChild(newCol);
 
-    $('#metainfo').appendChild(newRow);
+    $('#metainfo').html(newRow);
 }
 
 // Saves the entries from the user input fields to session storage.

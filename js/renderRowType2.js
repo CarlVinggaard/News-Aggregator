@@ -10,7 +10,7 @@ function renderRowType2(article1, article2) {
 
     // Line(s) at the bottom
     let newLineRow = document.createElement('div');
-    newLineRow.classList.add('row');
+    newLineRow.classList.add('row', 'w-100');
 
     let newLineDiv1 = document.createElement('div');
     let newLine1 = document.createElement('hr');
