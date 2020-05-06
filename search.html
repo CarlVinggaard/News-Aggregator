@@ -5,12 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+    <!-- JQUERY -->
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+
     <!-- BOOTSTRAP -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- SELECTIZE -->
+    <script type="text/javascript" src="node_modules/selectize/dist/js/standalone/selectize.min.js"></script>
+    <link rel="stylesheet" href="node_modules/selectize/dist/css/selectize.default.css"></link>
 
     <!-- FONT AWESOME -->
-    <script src="https://kit.fontawesome.com/d9c8a97a10.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/d9c8a97a10.js" crossorigin="anonymous" SameSite="none"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/css/flag-icon.min.css" 
+        integrity="sha256-YjcCvXkdRVOucibC9I4mBS41lXPrWfqY2BnpskhZPnw=" crossorigin="anonymous" />
 
     <!-- AXIOS -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -22,73 +32,82 @@
 </head>
 <body>
     
-    <main class="wrapper container justify-content-center my-4">
-
+    <header>
         <!-- NAVBAR -->
+        <div class="top-margin"></div>
         <nav class="navbar navbar-expand-lg navbar-light">
             
-            <div class="row mx-auto">
+            <div class="row mx-xs-4 mx-lg-auto">
 
                 <div class="col-12 d-flex">
-                    <a class="navbar-brand mx-auto text-uppercase text-center" href="index.html">Insert cool name/logo</a>
+                    <a class="navbar-brand mx-auto text-center text-uppercase" href="index.html">GLOBAL NEWS</a>
                 </div>
 
                 <div class="col-12">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+                    <div class="row justify-content-center">
+                        <button class="navbar-toggler hamburger-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
+                            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
 
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav mx-auto d-table-row align-middle">
-                            <li class="nav-item d-table-cell">
-                                <a class="nav-link" href="index.html">News</a>
-                            </li>
-                            <li class="nav-item d-table-cell">
-                                <a class="nav-link" href="business.html">Business</a>
-                            </li>
-                            <li class="nav-item d-table-cell">
-                                <a class="nav-link" href="sports.html">Sports</a>
-                            </li>
-                            <li class="nav-item d-table-cell">
-                                <a class="nav-link" href="entertainment.html">Entertainment</a>
-                            </li>
-                            <li class="nav-item d-table-cell">
-                                <a class="nav-link" href="technology.html">Technology</a>
-                            </li>
-                            <li class="nav-item d-table-cell">
-                                <a class="nav-link" href="science.html">Science</a>
-                            </li>
-                            <li class="nav-item d-table-cell">
-                                <a class="nav-link" href="health.html">Health</a>
-                            </li>
-                        </ul>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul id="navbar" class="navbar-nav d-table-row align-middle">
+                                <li id="general" class="nav-item d-table-cell">
+                                    <button class="nav-link mx-2" onclick="window.sessionStorage.setItem('category', 'general'); location.pathname = '/index.html'; updatePage();">
+                                        News</button>
+                                </li>
+                                <li id="business" class="nav-item d-table-cell">
+                                    <button class="nav-link mx-2" onclick="window.sessionStorage.setItem('category', 'business'); location.pathname = '/index.html'; updatePage();">Business</button>
+                                </li>
+                                <li id="sports" class="nav-item d-table-cell">
+                                    <button class="nav-link mx-2" onclick="window.sessionStorage.setItem('category', 'sports'); location.pathname = '/index.html'; updatePage();">Sports</button>
+                                </li>
+                                <li id="entertainment" class="nav-item d-table-cell">
+                                    <button class="nav-link mx-2" onclick="window.sessionStorage.setItem('category', 'entertainment'); location.pathname = '/index.html'; updatePage();">Entertainment</button>
+                                </li>
+                                <li id="technology" class="nav-item d-table-cell">
+                                    <button class="nav-link mx-2" onclick="window.sessionStorage.setItem('category', 'technology'); location.pathname = '/index.html'; updatePage();">Technology</button>
+                                </li>
+                                <li id="science" class="nav-item d-table-cell">
+                                    <button class="nav-link mx-2" onclick="window.sessionStorage.setItem('category', 'science'); location.pathname = '/index.html'; updatePage();">Science</button>
+                                </li>
+                                <li id="health" class="nav-item d-table-cell">
+                                    <button class="nav-link mx-2" onclick="window.sessionStorage.setItem('category', 'health'); location.pathname = '/index.html'; updatePage();">Health</button>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </nav>
+    </header>
 
-        <div class="row justify-content-center mt-5">
+    <main class="justify-content-center mb-4">
+
+        <!-- SEARCH BAR -->
+        <div class="row justify-content-center my-4">
             <div class="col-12 section-container">
-                <input id="searchinput" type="text" class="searchfield-wide"></input>
-                <a class="btn" onclick="saveUserInputToSessionStorage(); showSearchResults();">
-                    <i class="fas fa-search text-secondary"></i>
+                <input id="searchinput" type="text" placeholder="Search news articles from the whole world ..." class="navbar-search search-border searchfield-wide px-3"></input>
+                <a id="searchbutton" class="btn" onclick="saveUserInputToSessionStorage(); showSearchResults();">
+                    <i class="fas fa-search"></i>
                 </a>
             </div>
         </div>
 
-        <div id="searchoptions" class="container">
-            <div class="row justify-content-center">
-                <div class="col-12 section-container">
-                    <form class="ml-auto">
+        <!-- FILTERS -->
+        <div id="searchoptions">
+            <div class="row">
+                <div class="col-12">
+                    <form class="mx-auto d-flex justify-content-around">
                         
                         <div class="form-group">
                             <label for="language">Language</label>
-                            <select id="language">
+                            <select id="language" onchange="showSearchResults();">
                                 <option value="en">English</option>
-                                <option value="zh">Chinese</option>
-                                <option value="ru">Russian</option>
+                                <option value="cn">Chinese</option>
                                 <option value="es">Spanish</option>
                                 <option value="pt">Portuguese</option>
+                                <option value="ru">Russian</option>
                                 <option value="de">German</option>
                                 <option value="no">Norwegian</option>
                             </select>
@@ -96,7 +115,7 @@
 
                         <div class="form-group">
                             <label for="sortby">Sort by</label>
-                            <select id="sortby">
+                            <select id="sortby" onchange="showSearchResults();">
                                 <option value="publishedAt">Recency</option>
                                 <option value="relevancy">Relevancy</option>
                                 <option value="popularity">Popularity</option>
@@ -108,12 +127,14 @@
             </div>
         </div>
 
-        <div id="metainfo" class="container"></div>
+        <!-- SEARCH METAINFO -->
+        <div id="metainfo"></div>
         
-        <div id="searchresults" class="container my-5"></div>
+        <!-- SEARCH RESULTS -->
+        <div id="searchresults" class="my-5"></div>
 
         <!-- PAGINATION BUTTONS -->
-        <div class="container my-5">
+        <div class="my-5">
             <div class="row justify-content-center">
                 <div class="col-12">
                     <div id="pagination" class="text-center"></div>
@@ -127,6 +148,7 @@
 
     <script src="js/main.js"></script>
     <script src="js/search.js"></script>
+    <script src="js/eventListener.js"></script>
     <!-- <script src="js/pagination.js"></script> -->
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="

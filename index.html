@@ -58,7 +58,8 @@
 
                         <div class="col-12">
                             <div class="row justify-content-center">
-                                <button class="navbar-toggler hamburger-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <button class="navbar-toggler hamburger-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
+                                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                                     <span class="navbar-toggler-icon"></span>
                                 </button>
 
@@ -91,17 +92,18 @@
                                     showSearchBar();
                                     if ($('#searchinput').val()) {
                                         window.sessionStorage.setItem('query', $('#searchinput').val());
-                                        console.log(window.sessionStorage.getItem('query'));
                                         location.pathname = '/search.html'
                                     }
                                     $('#searchinput').val('');
                                     ">
-                                    <i class="fas fa-search text-secondary"></i>
+                                    <i class="fas fa-search"></i>
                                 </a>
                             </div>
                             <div class="row justify-content-center">
                                 <div class="col-12 mt-2 search-container">
-                                    <input id="searchinput" type="text" placeholder="Search news articles from the whole world ..." class="navbar-search px-3 w-0 h-0"></input>
+                                    <input id="searchinput" type="text" placeholder="Search news articles from the whole world ..." 
+                                        class="navbar-search search-position px-3 w-0 h-0">
+                                    </input>
                                 </div>
                             </div>
                         </div>
@@ -111,7 +113,7 @@
         </div>
     </header>
 
-    <main class="wrapper container justify-content-center mb-4">
+    <main class="justify-content-center mb-4">
 
         <!-- CATEGORY BAR -->
         <div class="row">
