@@ -38,7 +38,7 @@
                 <div class="row">
                     <div class="col-12">
                         <form>
-                            <div class="form-group region-select ml-auto my-5">
+                            <div class="form-group region-select mx-auto mx-sm-0 ml-sm-auto mt-5">
                                 <label for="region">Region</label>
                                 <select id="region" onchange="updateFrontPage();">
                                 </select>
@@ -48,23 +48,25 @@
                 </div>
 
                 <!-- NAVBAR -->
-                <nav class="navbar navbar-expand-lg navbar-light">
+                <nav class="container navbar navbar-expand-md navbar-light">
                     
-                    <div class="row mx-xs-4 mx-lg-auto">
+                    <div class="row mx-xs-4 mx-md-auto mt-neg w-100">
 
-                        <div class="col-12 d-flex">
-                            <a class="navbar-brand mx-auto text-center text-uppercase" href="/">GLOBAL NEWS</a>
+                        <div class="col-12 d-flex mb-4 p-0">
+                            <a id="logo" class="navbar-brand mx-auto mx-sm-0 mx-md-auto" href="/">
+                                <img class="logo" src="assets/NewsWorld-logo.svg" />
+                            </a>
                         </div>
 
-                        <div class="col-12">
-                            <div class="row justify-content-center">
+                        <div class="col-12 p-0">
+                            <div class="row justify-content-between justify-content-md-center mx-3 mx-md-0 w-100">
                                 <button class="navbar-toggler hamburger-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
                                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                                     <span class="navbar-toggler-icon"></span>
                                 </button>
 
                                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                                    <ul id="navbar" class="navbar-nav d-table-row align-middle">
+                                    <ul id="navbar" class="navbar-nav d-table-md-row align-middle">
                                         <li id="general" class="nav-item d-table-cell">
                                             <button class="nav-link mx-2" onclick="window.sessionStorage.setItem('category', 'general'); updateFrontPage();">News</button>
                                         </li>
@@ -101,7 +103,7 @@
                             </div>
                             <div class="row justify-content-center">
                                 <div class="col-12 mt-2 search-container">
-                                    <input id="searchinput" type="text" placeholder="Search news articles from the whole world ..." 
+                                    <input id="searchinput" type="text" placeholder="Search news articles from the whole world" 
                                         class="navbar-search search-position px-3 w-0 h-0">
                                     </input>
                                 </div>
@@ -116,8 +118,8 @@
     <main class="container justify-content-center mb-4">
 
         <!-- CATEGORY BAR -->
-        <div class="row">
-            <div id="category-bar" class="col-12 p-3">
+        <div class="row px-4 justify-content-center">
+            <div id="category-bar" class="col-12 p-3 section-container">
                 <h2 id="category-heading" class="text-uppercase d-inline"></h2>
                 <h4 id="region-heading" class="text-uppercase d-inline ml-3"></h4>
             </div>

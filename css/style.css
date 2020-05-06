@@ -42,12 +42,13 @@ hr {
 
 /*--- NAVIGATION MENU ---*/
 
-nav {
-    list-style-type: none;
+.logo {
+    width: 200px;
+    object-fit: contain;
 }
 
-.navitem-active {
-    border-bottom: 3px solid #1e3257;
+nav {
+    list-style-type: none;
 }
 
 .navitem-active > button {
@@ -69,7 +70,8 @@ nav {
 .nav-item > button {
     border: none;
     background-color: white;
-    font: 600 20px 'Open Sans';
+    font-weight: 600;
+    font-family: 'Open Sans';
 }
 
 .nav-item > button:focus {
@@ -144,7 +146,6 @@ article {
 .search-position {
     position: absolute;
     top: 24px;
-    right: 0;
 }
 
 .navbar-search {
@@ -219,15 +220,11 @@ article {
     opacity: 0;
 }
 
-.top-margin {
-    height: 168px;
+.img-mh {
+    max-height: 200px;
 }
 
-.img-mh {
-        max-height: 200px;
-    }
-
-/*--- RESPONSIVE FONT SIZES ---*/
+/*--- MEDIA QUERIES ---*/
 
 h1 {
     font: 900 2rem 'Raleway';
@@ -254,6 +251,18 @@ h2, h3, h4 {
     h4 {
         font: bold 1.5rem 'Raleway';
     }
+
+    .mh-100px {
+        max-height: 100px;
+    }
+
+    .pagination-button {
+        width: 125px;
+    }
+
+    .mt-neg {
+    margin-top: -120px;
+    }
 }
 
 @media (min-width: 768px) {
@@ -273,16 +282,27 @@ h2, h3, h4 {
     h4 {
         font: bold 1.5rem 'Raleway';
     }
-}
 
-/*--- OTHER RESPONSIVE CLASSES ---*/
-
-@media screen and (min-width: 575px) {
-    .mh-100px {
-        max-height: 100px;
+    .logo {
+        width: 260px;
     }
 
-    .pagination-button {
-        width: 125px;
+    .search-position {
+        right: 0;
+    }
+
+    .navitem-active {
+    border-bottom: 3px solid #1e3257;
+}
+}
+
+@media (min-width: 1000px) {
+    
+    .nav-item > button {
+        font-size: 20px;
+    }
+
+    .logo {
+        width: 400px;
     }
 }

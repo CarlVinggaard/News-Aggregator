@@ -34,45 +34,45 @@
     
     <header>
         <!-- NAVBAR -->
-        <div class="top-margin"></div>
-        <nav class="navbar navbar-expand-lg navbar-light">
+        <nav class="container navbar navbar-expand-md navbar-light">
             
-            <div class="row mx-xs-4 mx-lg-auto">
+            <div class="row mx-xs-4 mx-md-auto mt-4 w-100">
 
-                <div class="col-12 d-flex">
-                    <a class="navbar-brand mx-auto text-center text-uppercase" href="index.html">GLOBAL NEWS</a>
+                <div class="col-12 d-flex mb-4 p-0">
+                    <a id="logo" class="navbar-brand mx-auto" href="/">
+                        <img class="logo" src="assets/NewsWorld-logo.svg" />
+                    </a>
                 </div>
 
-                <div class="col-12">
-                    <div class="row justify-content-center">
+                <div class="col-12 p-0">
+                    <div class="row justify-content-between justify-content-md-center mx-3 mx-md-0 w-100">
                         <button class="navbar-toggler hamburger-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
                             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
 
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul id="navbar" class="navbar-nav d-table-row align-middle">
+                            <ul id="navbar" class="navbar-nav d-table-md-row align-middle">
                                 <li id="general" class="nav-item d-table-cell">
-                                    <button class="nav-link mx-2" onclick="window.sessionStorage.setItem('category', 'general'); location.pathname = '/index.html'; updateFrontPage();">
-                                        News</button>
+                                    <button class="nav-link mx-2" onclick="window.sessionStorage.setItem('category', 'general'); location.pathname = '/'; updateFrontPage();">News</button>
                                 </li>
                                 <li id="business" class="nav-item d-table-cell">
-                                    <button class="nav-link mx-2" onclick="window.sessionStorage.setItem('category', 'business'); location.pathname = '/index.html'; updateFrontPage();">Business</button>
+                                    <button class="nav-link mx-2" onclick="window.sessionStorage.setItem('category', 'business'); location.pathname = '/'; updateFrontPage();">Business</button>
                                 </li>
                                 <li id="sports" class="nav-item d-table-cell">
-                                    <button class="nav-link mx-2" onclick="window.sessionStorage.setItem('category', 'sports'); location.pathname = '/index.html'; updateFrontPage();">Sports</button>
+                                    <button class="nav-link mx-2" onclick="window.sessionStorage.setItem('category', 'sports'); location.pathname = '/'; updateFrontPage();">Sports</button>
                                 </li>
                                 <li id="entertainment" class="nav-item d-table-cell">
-                                    <button class="nav-link mx-2" onclick="window.sessionStorage.setItem('category', 'entertainment'); location.pathname = '/index.html'; updateFrontPage();">Entertainment</button>
+                                    <button class="nav-link mx-2" onclick="window.sessionStorage.setItem('category', 'entertainment'); location.pathname = '/'; updateFrontPage();">Entertainment</button>
                                 </li>
                                 <li id="technology" class="nav-item d-table-cell">
-                                    <button class="nav-link mx-2" onclick="window.sessionStorage.setItem('category', 'technology'); location.pathname = '/index.html'; updateFrontPage();">Technology</button>
+                                    <button class="nav-link mx-2" onclick="window.sessionStorage.setItem('category', 'technology'); location.pathname = '/'; updateFrontPage();">Technology</button>
                                 </li>
                                 <li id="science" class="nav-item d-table-cell">
-                                    <button class="nav-link mx-2" onclick="window.sessionStorage.setItem('category', 'science'); location.pathname = '/index.html'; updateFrontPage();">Science</button>
+                                    <button class="nav-link mx-2" onclick="window.sessionStorage.setItem('category', 'science'); location.pathname = '/'; updateFrontPage();">Science</button>
                                 </li>
                                 <li id="health" class="nav-item d-table-cell">
-                                    <button class="nav-link mx-2" onclick="window.sessionStorage.setItem('category', 'health'); location.pathname = '/index.html'; updateFrontPage();">Health</button>
+                                    <button class="nav-link mx-2" onclick="window.sessionStorage.setItem('category', 'health'); location.pathname = '/'; updateFrontPage();">Health</button>
                                 </li>
                             </ul>
                         </div>
@@ -131,7 +131,7 @@
         <div id="metainfo" class="mb-2"></div>
         
         <!-- SEARCH RESULTS -->
-        <div id="searchresults" class="mt-5"></div>
+        <div id="searchresults" class="mt-5 px-3"></div>
 
         <!-- SEARCH METAINFO -->
         <div id="results-shown" class="mb-2"></div>
