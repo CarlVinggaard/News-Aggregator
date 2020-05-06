@@ -10,9 +10,7 @@ a:hover {
 }
 
 button {
-    border: none;
-    background-color: white;
-    font: 600 20px 'Open Sans';
+    
 }
 
 button:focus {
@@ -70,6 +68,12 @@ nav {
 
 .navbar-collapse {
     flex-grow: 0;
+}
+
+.nav-item > button {
+    border: none;
+    background-color: white;
+    font: 600 20px 'Open Sans';
 }
 
 .nav-item > button:focus {
@@ -167,6 +171,7 @@ article {
     border: 0;
     background-color: #f9f9f9;
     border-radius: 4px;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.8);
 }
 
 .current-query {
@@ -174,10 +179,31 @@ article {
     color: #1e3257;
 }
 
+/*--- SEARCH PAGE ---*/
+
 #metainfo {
     height: 64px;
     font-size: 0.9rem;
     color: gray;
+}
+
+#results-shown {
+    height: 32px;
+    font-size: 0.9rem;
+    color: gray;
+}
+
+.pagination-button {
+    width: 125px;
+    border: 0;
+    border-radius: 4px;
+    background-color: #1e3257;
+    color: white;
+}
+
+.pagination-button:disabled {
+    background-color: lightgray;
+    color: black;
 }
 
 /*--- GENERAL UTILITY ---*/

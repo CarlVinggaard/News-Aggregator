@@ -114,7 +114,7 @@ function setActiveNavItem() {
     })
 }
 
-function updatePage() {
+function updateFrontPage() {
     updateCategoryBar();
     showTopStories();
     setActiveNavItem();

@@ -53,26 +53,26 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul id="navbar" class="navbar-nav d-table-row align-middle">
                                 <li id="general" class="nav-item d-table-cell">
-                                    <button class="nav-link mx-2" onclick="window.sessionStorage.setItem('category', 'general'); location.pathname = '/index.html'; updatePage();">
+                                    <button class="nav-link mx-2" onclick="window.sessionStorage.setItem('category', 'general'); location.pathname = '/index.html'; updateFrontPage();">
                                         News</button>
                                 </li>
                                 <li id="business" class="nav-item d-table-cell">
-                                    <button class="nav-link mx-2" onclick="window.sessionStorage.setItem('category', 'business'); location.pathname = '/index.html'; updatePage();">Business</button>
+                                    <button class="nav-link mx-2" onclick="window.sessionStorage.setItem('category', 'business'); location.pathname = '/index.html'; updateFrontPage();">Business</button>
                                 </li>
                                 <li id="sports" class="nav-item d-table-cell">
-                                    <button class="nav-link mx-2" onclick="window.sessionStorage.setItem('category', 'sports'); location.pathname = '/index.html'; updatePage();">Sports</button>
+                                    <button class="nav-link mx-2" onclick="window.sessionStorage.setItem('category', 'sports'); location.pathname = '/index.html'; updateFrontPage();">Sports</button>
                                 </li>
                                 <li id="entertainment" class="nav-item d-table-cell">
-                                    <button class="nav-link mx-2" onclick="window.sessionStorage.setItem('category', 'entertainment'); location.pathname = '/index.html'; updatePage();">Entertainment</button>
+                                    <button class="nav-link mx-2" onclick="window.sessionStorage.setItem('category', 'entertainment'); location.pathname = '/index.html'; updateFrontPage();">Entertainment</button>
                                 </li>
                                 <li id="technology" class="nav-item d-table-cell">
-                                    <button class="nav-link mx-2" onclick="window.sessionStorage.setItem('category', 'technology'); location.pathname = '/index.html'; updatePage();">Technology</button>
+                                    <button class="nav-link mx-2" onclick="window.sessionStorage.setItem('category', 'technology'); location.pathname = '/index.html'; updateFrontPage();">Technology</button>
                                 </li>
                                 <li id="science" class="nav-item d-table-cell">
-                                    <button class="nav-link mx-2" onclick="window.sessionStorage.setItem('category', 'science'); location.pathname = '/index.html'; updatePage();">Science</button>
+                                    <button class="nav-link mx-2" onclick="window.sessionStorage.setItem('category', 'science'); location.pathname = '/index.html'; updateFrontPage();">Science</button>
                                 </li>
                                 <li id="health" class="nav-item d-table-cell">
-                                    <button class="nav-link mx-2" onclick="window.sessionStorage.setItem('category', 'health'); location.pathname = '/index.html'; updatePage();">Health</button>
+                                    <button class="nav-link mx-2" onclick="window.sessionStorage.setItem('category', 'health'); location.pathname = '/index.html'; updateFrontPage();">Health</button>
                                 </li>
                             </ul>
                         </div>
@@ -88,7 +88,7 @@
         <div class="row justify-content-center my-4">
             <div class="col-12 section-container">
                 <input id="searchinput" type="text" placeholder="Search news articles from the whole world ..." class="navbar-search search-border searchfield-wide px-3"></input>
-                <a id="searchbutton" class="btn" onclick="saveUserInputToSessionStorage(); showSearchResults();">
+                <a id="searchbutton" class="btn" onclick="saveUserInputToSessionStorage(); updateSearchPage();">
                     <i class="fas fa-search"></i>
                 </a>
             </div>
@@ -102,7 +102,7 @@
                         
                         <div class="form-group">
                             <label for="language" class="mr-3">Language</label>
-                            <select id="language" class="filter-dropdown p-2" onchange="showSearchResults();">
+                            <select id="language" class="filter-dropdown p-2" onchange="updateSearchPage();">
                                 <option value="en">English</option>
                                 <option value="cn">Chinese</option>
                                 <option value="es">Spanish</option>
@@ -115,7 +115,7 @@
 
                         <div class="form-group">
                             <label for="sortby"  class="mr-3">Sort by</label>
-                            <select id="sortby" class="filter-dropdown p-2" onchange="showSearchResults(); showSearchMetaInfo();">
+                            <select id="sortby" class="filter-dropdown p-2" onchange="updateSearchPage();">
                                 <option value="publishedAt">Recency</option>
                                 <option value="relevancy">Relevancy</option>
                                 <option value="popularity">Popularity</option>
@@ -131,13 +131,25 @@
         <div id="metainfo" class="mb-2"></div>
         
         <!-- SEARCH RESULTS -->
-        <div id="searchresults" class="my-5"></div>
+        <div id="searchresults" class="mt-5"></div>
+
+        <!-- SEARCH METAINFO -->
+        <div id="results-shown" class="mb-2"></div>
 
         <!-- PAGINATION BUTTONS -->
-        <div class="my-5">
+        <div class="mt-2 mb-5">
             <div class="row justify-content-center">
                 <div class="col-12">
-                    <div id="pagination" class="text-center"></div>
+                    <div id="pagination" class="text-center justify-content-center d-none">
+                        <button id="previous-button" class="py-2 mx-2 pagination-button" onclick="decrementPage(); showSearchResults(); showSearchMetaInfo(); window.scrollTo(0, 0);">
+                            <i class="fas fa-chevron-left"></i>
+                            Previous
+                        </button>
+                        <button id="next-button" class="p-2 mx-2 pagination-button" onclick="incrementPage(); showSearchResults(); showSearchMetaInfo(); window.scrollTo(0, 0);">
+                            Next
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -153,7 +165,7 @@
     <script src="js/main.js"></script>
     <script src="js/search.js"></script>
     <script src="js/eventListener.js"></script>
-    <!-- <script src="js/pagination.js"></script> -->
+    <script src="js/pagination.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
         crossorigin="anonymous"></script>
@@ -164,9 +176,7 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
     <script>
-        showSearchResults();
-
-        document.title = window.sessionStorage.getItem('query');
+        updateSearchPage();
     </script>
 
 </body>

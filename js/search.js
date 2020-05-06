@@ -12,7 +12,9 @@ function showSearchResults() {
         url += '&sortBy=' + $('#sortby').val();
     }}
 
-    url += '&pageSize=10'
+    url += '&page=' + window.sessionStorage.getItem('page');
+
+    url += '&pageSize=10';
 
     url += '&apiKey=081f564d356d457982b0cf109a72aea8';
 
@@ -33,7 +35,7 @@ function fetchDataForSearch(url) {
 
         renderListFromResponseObject(response.data.articles);
         showSearchMetaInfo();
-
+        showPaginationButtons();
 
     })
     .catch(err =>
@@ -125,6 +127,9 @@ function showSearchItem(article) {
 
 // Renders html for the metainfo for the search.
 function showSearchMetaInfo() {
+    let startNum = (window.sessionStorage.getItem('page') * 10) - 9;
+    let endNum = Math.min(window.sessionStorage.getItem('page') * 10, window.sessionStorage.getItem('totalResults'));
+
     let newRow = document.createElement('div');
     newRow.classList.add('row', 'justify-content-center', 'p-1');
 
@@ -141,7 +146,10 @@ function showSearchMetaInfo() {
     newParagraph.appendChild(newSpan);
 
     let newParagraph2 = document.createElement('p');
-    newParagraph2.innerHTML = 'Showing 10 of ' + window.sessionStorage.getItem('totalResults') + ' results';
+    newParagraph2.innerHTML = 'Showing results ' + startNum + ' - ' + endNum + ' of ' + window.sessionStorage.getItem('totalResults');
+
+    let newParagraph3 = document.createElement('p');
+    newParagraph3.innerHTML = newParagraph2.innerHTML;
 
     // Put it together
     newCol.appendChild(newParagraph);
@@ -149,6 +157,7 @@ function showSearchMetaInfo() {
     newRow.appendChild(newCol);
 
     $('#metainfo').html(newRow);
+    $('#results-shown').html(newParagraph3);
 }
 
 // Saves the entries from the user input fields to session storage.
@@ -165,4 +174,11 @@ function saveUserInputToSessionStorage() {
     if ($('#sortby').val()) {
         window.sessionStorage.setItem('sortby', $('#sortby').val());
     }
+}
+
+function updateSearchPage() {
+    setPage(1);
+    showSearchResults();
+    showSearchMetaInfo();
+    document.title = window.sessionStorage.getItem('query');
 }
