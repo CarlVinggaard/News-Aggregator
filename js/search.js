@@ -26,8 +26,6 @@ function showSearchResults() {
 // Send GET request and call the renderListFromResponseObject function with the response data.
 function fetchDataForSearch(url) {
 
-    console.log(url);
-
     axios.get(url)
     .then(response => {
 
@@ -48,7 +46,7 @@ function renderListFromResponseObject(responseArray) {
 
     let canvas = document.createElement('div');
 
-    for (article of responseArray) {
+    for (let article of responseArray) {
         
         newRow = showSearchItem(article);
         canvas.appendChild(newRow);
@@ -102,8 +100,8 @@ function showSearchItem(article) {
     newParagraph.classList.add('mb-4');
     newParagraph.innerText = article.description;
 
-    let newSource = document.createElement('p')
-    newSource.classList.add('source-text')
+    let newSource = document.createElement('p');
+    newSource.classList.add('source-text');
     newSource.innerText = article.source.name;
 
     // Append it together

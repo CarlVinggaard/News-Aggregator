@@ -6,7 +6,7 @@ const categoryColors = {
         "technology": ["lightblue", "black"],
         "sports": ["darkred", "white"],
         "entertainment": ["orange", "darkred"]
-    }
+    };
 
 // String the URL together from the user input and call the fetchData function.
 function showTopStories() {
@@ -14,7 +14,9 @@ function showTopStories() {
     let category = window.sessionStorage.getItem('category');
     let country = $('#region').val();
     
-    if (country !== "") {
+    if (country !== null
+        
+        ) {
         url += '&country=' + country;
     } else {
         url += '&country=gb';
@@ -30,15 +32,16 @@ function showTopStories() {
 // Send GET request and call the renderPageFromResponseObject() function with the response.
 function fetchDataForTopStories(url) {
 
+    console.log('fetchData..() was called with url: ' + url);
     axios.get(url)
-    .then(response => {
-        
-        renderPageFromResponseObject(response.data.articles);
+        .then(response => {
+            
+            renderPageFromResponseObject(response.data.articles);
 
-    })
-    .catch(err => {
-        console.log(err);
-    });
+        })
+        .catch(err => {
+            console.log(err);
+        });
 }
 
 // Renders the contents of an array to the page.
@@ -112,7 +115,7 @@ function setActiveNavItem() {
         if ($(this).attr('id') === currentCategory) {
             $(this).addClass('navitem-active');
         }
-    })
+    });
 }
 
 function updateFrontPage() {
