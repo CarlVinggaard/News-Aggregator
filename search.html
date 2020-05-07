@@ -44,25 +44,25 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul id="navbar" class="navbar-nav d-table-md-row align-middle">
                                 <li id="general" class="nav-item d-table-cell">
-                                    <button class="nav-link mx-2" onclick="window.sessionStorage.setItem('category', 'general'); location.pathname = '/'; updateFrontPage();">News</button>
+                                    <button class="nav-link mx-2" onclick="goToCategoryPage('general');">News</button>
                                 </li>
                                 <li id="business" class="nav-item d-table-cell">
-                                    <button class="nav-link mx-2" onclick="window.sessionStorage.setItem('category', 'business'); location.pathname = '/'; updateFrontPage();">Business</button>
+                                    <button class="nav-link mx-2" onclick="goToCategoryPage('business');">Business</button>
                                 </li>
                                 <li id="sports" class="nav-item d-table-cell">
-                                    <button class="nav-link mx-2" onclick="window.sessionStorage.setItem('category', 'sports'); location.pathname = '/'; updateFrontPage();">Sports</button>
+                                    <button class="nav-link mx-2" onclick="goToCategoryPage('sports');">Sports</button>
                                 </li>
                                 <li id="entertainment" class="nav-item d-table-cell">
-                                    <button class="nav-link mx-2" onclick="window.sessionStorage.setItem('category', 'entertainment'); location.pathname = '/'; updateFrontPage();">Entertainment</button>
+                                    <button class="nav-link mx-2" onclick="goToCategoryPage('entertainment');">Entertainment</button>
                                 </li>
                                 <li id="technology" class="nav-item d-table-cell">
-                                    <button class="nav-link mx-2" onclick="window.sessionStorage.setItem('category', 'technology'); location.pathname = '/'; updateFrontPage();">Technology</button>
+                                    <button class="nav-link mx-2" onclick="goToCategoryPage('technology');">Technology</button>
                                 </li>
                                 <li id="science" class="nav-item d-table-cell">
-                                    <button class="nav-link mx-2" onclick="window.sessionStorage.setItem('category', 'science'); location.pathname = '/'; updateFrontPage();">Science</button>
+                                    <button class="nav-link mx-2" onclick="goToCategoryPage('science');">Science</button>
                                 </li>
                                 <li id="health" class="nav-item d-table-cell">
-                                    <button class="nav-link mx-2" onclick="window.sessionStorage.setItem('category', 'health'); location.pathname = '/'; updateFrontPage();">Health</button>
+                                    <button class="nav-link mx-2" onclick="goToCategoryPage('health');">Health</button>
                                 </li>
                             </ul>
                         </div>
@@ -92,7 +92,7 @@
                         
                         <div class="form-group">
                             <label for="language" class="mr-3">Language</label>
-                            <select id="language" class="filter-dropdown p-2" onchange="updateSearchPage();">
+                            <select id="language" class="filter-dropdown p-2" onchange="setLanguage(); updateSearchPage();">
                                 <option value="en">English</option>
                                 <option value="cn">Chinese</option>
                                 <option value="es">Spanish</option>
@@ -168,6 +168,9 @@
     <script src="js/pagination.js"></script>
 
     <script>
+        let language = window.sessionStorage.getItem('language') || 'en';
+        $('#language').val(language);
+        
         updateSearchPage();
     </script>
 

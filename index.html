@@ -34,7 +34,7 @@
                         <form>
                             <div class="form-group region-select mx-auto mx-sm-0 ml-sm-auto mt-5">
                                 <label for="region">Region</label>
-                                <select id="region" onchange="updateFrontPage();">
+                                <select id="region" onchange="setRegion(); updateFrontPage();">
                                 </select>
                             </div>
                         </form>
@@ -62,36 +62,29 @@
                                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                     <ul id="navbar" class="navbar-nav d-table-md-row align-middle">
                                         <li id="general" class="nav-item d-table-cell">
-                                            <button class="nav-link mx-2" onclick="window.sessionStorage.setItem('category', 'general'); updateFrontPage();">News</button>
+                                            <button class="nav-link mx-2" onclick="changeCategory('general');">News</button>
                                         </li>
                                         <li id="business" class="nav-item d-table-cell">
-                                            <button class="nav-link mx-2" onclick="window.sessionStorage.setItem('category', 'business'); updateFrontPage();">Business</button>
+                                            <button class="nav-link mx-2" onclick="changeCategory('business');">Business</button>
                                         </li>
                                         <li id="sports" class="nav-item d-table-cell">
-                                            <button class="nav-link mx-2" onclick="window.sessionStorage.setItem('category', 'sports'); updateFrontPage();">Sports</button>
+                                            <button class="nav-link mx-2" onclick="changeCategory('sports');">Sports</button>
                                         </li>
                                         <li id="entertainment" class="nav-item d-table-cell">
-                                            <button class="nav-link mx-2" onclick="window.sessionStorage.setItem('category', 'entertainment'); updateFrontPage();">Entertainment</button>
+                                            <button class="nav-link mx-2" onclick="changeCategory('entertainment');">Entertainment</button>
                                         </li>
                                         <li id="technology" class="nav-item d-table-cell">
-                                            <button class="nav-link mx-2" onclick="window.sessionStorage.setItem('category', 'technology'); updateFrontPage();">Technology</button>
+                                            <button class="nav-link mx-2" onclick="changeCategory('technology');">Technology</button>
                                         </li>
                                         <li id="science" class="nav-item d-table-cell">
-                                            <button class="nav-link mx-2" onclick="window.sessionStorage.setItem('category', 'science'); updateFrontPage();">Science</button>
+                                            <button class="nav-link mx-2" onclick="changeCategory('science');">Science</button>
                                         </li>
                                         <li id="health" class="nav-item d-table-cell">
-                                            <button class="nav-link mx-2" onclick="window.sessionStorage.setItem('category', 'health'); updateFrontPage();">Health</button>
+                                            <button class="nav-link mx-2" onclick="changeCategory('health');">Health</button>
                                         </li>
                                     </ul>
                                 </div>
-                                <a id="searchbutton" class="btn pt-2 mx-2" onclick="
-                                    showSearchBar();
-                                    if ($('#searchinput').val()) {
-                                        window.sessionStorage.setItem('query', $('#searchinput').val());
-                                        location.pathname = '/search.html'
-                                    }
-                                    $('#searchinput').val('');
-                                    ">
+                                <a id="searchbutton" class="btn pt-2 mx-2" onclick="showSearchBar(); goToSearchPage();">
                                     <i class="fas fa-search"></i>
                                 </a>
                             </div>
@@ -154,43 +147,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.js" integrity="sha256-412FxT7SHXk39AYYNe8+6YGQAhZhlKhthDw2Z3qp/B0=" 
         crossorigin="anonymous"></script>
 
-    <script>
-        const $select = $('select').selectize({
-            valueField: "value",
-            labelField: "name",
-            options: [
-                {"value": "gb", "name": "Great Britain"},
-                {"value": "cn", "name": "China"},
-                {"value": "us", "name": "United States"},
-                {"value": "ca", "name": "Canada"},
-                {"value": "ru", "name": "Russia"},
-                {"value": "br", "name": "Brazil"},
-                {"value": "au", "name": "Australia"},
-                {"value": "de", "name": "Germany"},
-                {"value": "jp", "name": "Japan"},
-                {"value": "no", "name": "Norway"}
-            ],
-            render: {
-                option: function(item, escape) {
-                    return '<div class="m-2">'
-                    + '<span class="flag-icon flag-icon-' 
-                    + item.value 
-                    + '"></span> '
-                    + item.name
-                    + '</div>';
-                },
-                item: function(item, escape) {
-                    return '<div>'
-                    + '<span class="flag-icon flag-icon-' 
-                    + item.value 
-                    + '"></span> '
-                    + item.name
-                    + '</div>';
-                }
-            }
-        });
-        $select[0].selectize.setValue("gb");
-    </script>
+    <script src="js/selectize.config.js"></script>
 
     <script>
         if (!window.sessionStorage.getItem('category')) {

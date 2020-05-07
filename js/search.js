@@ -4,13 +4,13 @@ function showSearchResults() {
 
     let url = 'https://newsapi.org/v2/everything?q=' + query;
     
-    if (window.sessionStorage.getItem('language')) {
+    if ($('#language').val()) {
             url += '&language=' + $('#language').val();
     }
 
-    if ($('#sortby')) { if ($('#sortby').val()) {
+    if ($('#sortby').val()) {
         url += '&sortBy=' + $('#sortby').val();
-    }}
+    }
 
     url += '&page=' + window.sessionStorage.getItem('page');
 
@@ -26,6 +26,7 @@ function showSearchResults() {
 // Send GET request and call the renderListFromResponseObject function with the response data.
 function fetchDataForSearch(url) {
 
+    console.log(url)
     axios.get(url)
     .then(response => {
 
@@ -172,6 +173,11 @@ function saveUserInputToSessionStorage() {
     if ($('#sortby').val()) {
         window.sessionStorage.setItem('sortby', $('#sortby').val());
     }
+}
+
+function setLanguage() {
+    let newLanguage = $('#language').val();
+    window.sessionStorage.setItem('language', newLanguage);
 }
 
 function updateSearchPage() {

@@ -82,9 +82,29 @@ function removeSourceFromTitle(string) {
     return string.slice(0, index);
 }
 
+function setRegion() {
+    let newRegion = $('#region').val();
+    window.sessionStorage.setItem('region', newRegion);
+}
+
 function showSearchBar() {
     $('#searchinput').toggleClass(['w-0', 'h-0', 'search-border']);
     $('#searchheading').toggleClass('opacity-0');
+    $('#searchinput').focus();
+}
+
+function goToSearchPage() {
+    if ($('#searchinput').val()) {
+        window.sessionStorage.setItem('query', $('#searchinput').val());
+        window.location.href = window.location.href + 'search.html';
+    }
+    $('#searchinput').val('');
+}
+
+function goToCategoryPage(category) {
+    window.sessionStorage.setItem('category', category);
+    window.location.href = window.location.href.replace('/search.html', '');
+    updateFrontPage();
 }
 
 // The category bar changes color and text based on the chosen category
@@ -119,4 +139,9 @@ function updateFrontPage() {
     updateCategoryBar();
     showTopStories();
     setActiveNavItem();
+}
+
+function changeCategory(category) {
+    window.sessionStorage.setItem('category', category);
+    updateFrontPage();
 }
