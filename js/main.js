@@ -14,9 +14,7 @@ function showTopStories() {
     let category = window.sessionStorage.getItem('category');
     let country = $('#region').val();
     
-    if (country !== null
-        
-        ) {
+    if (country !== null) {
         url += '&country=' + country;
     } else {
         url += '&country=gb';
@@ -31,8 +29,7 @@ function showTopStories() {
 
 // Send GET request and call the renderPageFromResponseObject() function with the response.
 function fetchDataForTopStories(url) {
-
-    console.log('fetchData..() was called with url: ' + url);
+    
     axios.get(url)
         .then(response => {
             
