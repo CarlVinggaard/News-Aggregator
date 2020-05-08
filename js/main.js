@@ -34,6 +34,7 @@ function fetchDataForTopStories(url) {
         .then(response => {
             
             renderPageFromResponseObject(response.data.articles);
+            console.log(response.data.articles)
 
         })
         .catch(err => {
@@ -79,7 +80,11 @@ function renderPageFromResponseObject(responseArray) {
 function removeSourceFromTitle(string) {
 
     let index = string.indexOf(" - ");
-    return string.slice(0, index);
+    if (index > 0) {
+        return string.slice(0, index);
+    } else {
+        return string;
+    }
 }
 
 function setRegion() {
