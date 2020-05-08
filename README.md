@@ -50,10 +50,10 @@ more interesting to the reader.
 
 When searching by keyword, the results are presented in a more ordered manner, as is common with search results.
 
-### Clickable Prototype
+### UX Prototype
 
-A clickable prototype was created to display the structure and style of the site. The prototype is made in Figma, a powerful 
-interface design tool. The prototype can be accessed in Figma in the browser with the link: https://www.figma.com/file/oTn9ynIBqNCIqKqOQyhnp2/Global-News?node-id=0%3A1
+A wireframe prototype was created to display the structure and style of the site. The prototype is made in Figma. The prototype can be 
+accessed with the link: https://www.figma.com/file/oTn9ynIBqNCIqKqOQyhnp2/NewsWorld?node-id=0%3A1
 
 ## Features
 
@@ -93,6 +93,7 @@ The user can see the total number of results for a search query, as well as the 
 buttons are disabled if they can't be used. The buttons are hidden if there are less than 10 results.
 
 ### Future features
+
 #### Make the site truly singe-page
 Currently, the site includes two HTML-pages, index.html for top stories and search.html for search results (a decision that was made at the
 start of the project). In hindsight, this is probably not necessary. Navigating between the pages is done by adding and removing 'search.html'
@@ -112,7 +113,7 @@ adding strings together). This would also allow manipulation of the window.locat
     - Defines custom styles of the components on the site.
     - All CSS code written as part of this project is contained in assets/css/style.css.
 
-- Javascript
+- Javascript (ES6)
 
 - jQuery 3.5.1
     - Used for easy DOM manipulation with simpler code.
@@ -174,10 +175,13 @@ adding strings together). This would also allow manipulation of the window.locat
 automatic testing was only implemented on a single function, removeSourceFromTitle(). The function takes the title (a string) and removes
 news source, which is included in the headling after a hyphen wrapped in spaces (i.e. " - "). The test suite is located in js/jasmineTests.js.
 
-The tests are done automatically when the page loads. To see the test report:
+The tests are done automatically when the page loads. To see the test report in development mode:
     1. Go to css/style.css and scroll to the bottom.
     2. Comment out (or remove) the 'display: none' from the class .jasmine_html-report
     3. The report will appear at the bottom of the front page (index.html)
+
+The test report is also visible on the live site, by simply inspecting the page (e.g. in Chrome devtools) and removing 'display: none' from the
+<div> with class 'jasmine_html-report' at the bottom of the front page.
 
 ## Deployment
 
