@@ -7,21 +7,21 @@
 
     <!-- BOOTSTRAP -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" 
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
 
     <!-- JASMINE -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.5.0/jasmine.min.css" 
         integrity="sha256-US46s8iE//XjSFdoo70XyCnsGALF7ggrHbPCHqvoRn4=" crossorigin="anonymous" />
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="css/style.css"></link>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
 
     <!-- SELECTIZE -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.css"
         integrity="sha256-PaAZL3VjvuBsQSngzjA8dTdYa2mU88xmjd0vw8biXfg=" crossorigin="anonymous" />
 
     <!-- FONT AWESOME -->
-    <script src="https://kit.fontawesome.com/d9c8a97a10.js" crossorigin="anonymous" SameSite="none"></script>
+    <script src="https://kit.fontawesome.com/d9c8a97a10.js" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/css/flag-icon.min.css" 
         integrity="sha256-YjcCvXkdRVOucibC9I4mBS41lXPrWfqY2BnpskhZPnw=" crossorigin="anonymous" />
@@ -37,7 +37,7 @@
                     <div class="col-12">
                         <form>
                             <div class="form-group region-select mx-auto mx-sm-0 ml-sm-auto mt-5">
-                                <label for="region">Region</label>
+                                <label for="region">Country</label>
                                 <select id="region" onchange="setRegion(); updateFrontPage();">
                                 </select>
                             </div>
@@ -52,7 +52,7 @@
 
                         <div class="col-12 d-flex mb-4 p-0">
                             <a id="logo" class="navbar-brand mx-auto mx-sm-0 mx-md-auto" onclick="goToCategoryPage('general');">
-                                <img class="logo" src="assets/NewsWorld-logo.svg" />
+                                <img class="logo" src="assets/NewsWorld-logo.svg" alt="NewsWorld" />
                             </a>
                         </div>
 
@@ -96,7 +96,6 @@
                                 <div class="col-12 mt-2 search-container">
                                     <input id="searchinput" type="text" placeholder="Search news articles from the whole world" 
                                         class="navbar-search search-position px-3 w-0 h-0">
-                                    </input>
                                 </div>
                             </div>
                         </div>
