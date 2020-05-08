@@ -34,7 +34,6 @@ function fetchDataForTopStories(url) {
         .then(response => {
             
             renderPageFromResponseObject(response.data.articles);
-            console.log(response.data.articles)
 
         })
         .catch(err => {

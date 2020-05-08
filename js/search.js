@@ -26,7 +26,6 @@ function showSearchResults() {
 // Send GET request and call the renderListFromResponseObject function with the response data.
 function fetchDataForSearch(url) {
 
-    console.log(url)
     axios.get(url)
     .then(response => {
 
