@@ -130,6 +130,11 @@ adding strings together). This would also allow manipulation of the window.locat
     - Resource: https://fontawesome.com
     - https://kit.fontawesome.com/d9c8a97a10.js
 
+- Selectize.js
+    - Used to customize the country selector, specifically render options with flag icons
+    - Resouce: https://selectize.github.io/selectize.js/
+    - CDN: https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.js
+
 - Jasmine
     - Used for programmatic Testing
     - Resource: https://jasmine.github.iOS
