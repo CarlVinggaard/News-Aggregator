@@ -109,7 +109,7 @@ function goToCategoryPage(category) {
 
 // The category bar changes color and text based on the chosen category
 function updateCategoryBar() {
-    let currentCategory = window.sessionStorage.getItem('category');
+    let currentCategory = window.sessionStorage.getItem('category') || 'general';
     let currentRegion = $('#region').val();
 
     if (currentCategory === 'general') {
