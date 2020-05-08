@@ -304,3 +304,10 @@ h2, h3, h4 {
         width: 400px;
     }
 }
+
+/* HIDE JASMINE TEST REPORT */
+
+/* Remove this if you want to see the test results */
+.jasmine_html-reporter {
+    display: none;
+}
