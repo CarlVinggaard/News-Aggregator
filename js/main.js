@@ -29,16 +29,24 @@ function showTopStories() {
 
 // Send GET request and call the renderPageFromResponseObject() function with the response.
 function fetchDataForTopStories(url) {
+
+    console.log(url)
+
+    const proxy = {
+        host: '127.0.0.1',
+        port: 9000
+    };
     
     axios.get(url)
         .then(response => {
             
+            console.log(response.status)
             renderPageFromResponseObject(response.data.articles);
 
         })
-        .catch(err => {
+        /*.catch(err => {
             console.log(err);
-        });
+        });*/
 }
 
 // Renders the contents of an array to the page.
